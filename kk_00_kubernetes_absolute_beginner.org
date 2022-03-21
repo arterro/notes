@@ -3,12 +3,16 @@
 :END:
 #+TITLE: Kubernetes Absolute Beginner
 #+DESCRIPTION: Notes pertaining to the KodeKloud Kubernetes Absolute Beginner course
-#+hugo_lastmod: Time-stamp: <>
+#+hugo_lastmod: Time-stamp: <2022-03-20 22:29:48 (arterro)>
 
 * Kubernetes Overview
+
+-----
+
 Kubernetes (K8s) was initially built by Google but is now an open-source project (CNCF).
 
 ** Containers Overview
+
 Containers are not a new concept and they've been around for 10+ years. They exist in other forms like LXC (hard, low-level) but Docker has become the defacto standard due to the ease it brings at a higher level to create containers.
 
 Containers are completely isolated environments that can contain their own processes / network interfaces / mounts but share the same OS kernel.
@@ -16,6 +20,7 @@ Containers are completely isolated environments that can contain their own proce
 Sharing the same OS kernel means that Docker can run any OS as long as it shares the kernel of the host operating system. An example woul be Ubuntu, a linux kernel, allows us to run any type of Linux OS in a container like Gentoo, Debian, Arch and so forth. Alternatively, we would not be able to run a Windows container on a linux based host as the kernerls differ and said container would need to be ran on a Windows host.
 
 ** Container Orchestration
+
 Container Orchestration is the process of automatically deploying and managing containers, as such, Kubernetes is an orchestration technology.
 
 *Advantages*
@@ -25,27 +30,22 @@ Container Orchestration is the process of automatically deploying and managing c
 + Low hardware resources; easily scale up/down
 
 ** Kubernetes Architecture
-#+begin_verse
-*Nodes*
-A physical / virtual worker machine where K8s is installed and containers are launched
-#+end_verse
+
+  : Nodes
+  : A physical / virtual worker machine where K8s is installed and containers are launched
 
 If the node fails, what happens? Application goes down! (╥﹏╥)
 Don't fear cause we have clusters!
 
-#+begin_verse
-*Cluster*
-Set of nodes grouped together
-#+end_verse
+  : Cluster
+  : Set of nodes grouped together
 
 If one node fails the application keeps chugging about as it can be accessed from the other nodes. Having multiple nodes also helps in sharing load.
 
 Cool, who's gonna manage all of this (the cluster)?
 
-#+begin_verse
-*Master*
-A node with k8s installed on it, configured as a master that watches over the nodes in the cluster.
-#+end_verse
+  : Master
+  : A node with k8s installed on it, configured as a master that watches over the nodes in the cluster.
 
 Watches over the nodes in the cluster and is responsible for the orchestration of containrs on the worker nodes.
 
@@ -53,24 +53,18 @@ Watches over the nodes in the cluster and is responsible for the orchestration o
 
 When installing Kubernetes the following components are installed:
 
-+ API Server
-+ etcd
-+ kubelet
-+ Container Runtime
-+ Controller
-+ Scheduler
-
-*API Server* acts as the front-end for Kubernetes which users, management devices and CLI's communicate with to interact with clusters.
-
-*etcd* is a distributed reliable key-value store where Kubernetes stores all data used to manage the cluster. Responsible for implementing locks within the cluster to ensure there is no conflict between the masters.
-
-*kubelet* is the agent that runs on each node in the cluster making sure that the containers are running on the ndoes as expected.
-
-*Controller Runtime* is the underlying software used to run contaiuners.
-
-*Controllers* are the brains for orchestration, which are responsible for noticing and responding when nodes / containers / endpoints go down.
-
-*Scheduler* is responsible for distributing work / containers across multiple nodes by looking for newly created containers.*Kubeadm*
++ *API Server*
+  - acts as the front-end for Kubernetes which users, management devices and CLI's communicate with to interact with clusters.
++ *etcd*
+  - is a distributed reliable key-value store where Kubernetes stores all data used to manage the cluster. Responsible for implementing locks within the cluster to ensure there is no conflict between the masters.
++ *kubelet*
+  - is the agent that runs on each node in the cluster making sure that the containers are running on the ndoes
++ *Container Runtime*
+  - is the underlying software used to run contaiuners.
++ *Controller*
+  - are the brains for orchestration, which are responsible for noticing and responding when nodes / containers / endpoints go down.
++ *Scheduler*
+  - is responsible for distributing work / containers across multiple nodes by looking for newly created containers.
 
 *** Master vs Worker Nodes
 
@@ -94,10 +88,8 @@ minikube is developer friendly and good for testing purposes, as it bundles all 
 
 Kubernetes does not deploy containers directly on the worker nodes; instead are encapsulated into a Kubernetes object known as a *Pod*.
 
-#+begin_verse
-*Pod*
-Single instance of an application, the smallest object that can be created in Kubernetes.
-#+end_verse
+  : Pod
+  : Single instance of an application, the smallest object that can be created in Kubernetes.
 
 Pods share a 1:1 relation with container images running the application. If you need to scale up, you add more pods and remove pods to scale down.
 
