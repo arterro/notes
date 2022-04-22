@@ -3,7 +3,7 @@
 :END:
 #+TITLE: Kubernetes Absolute Beginner
 #+DESCRIPTION: Notes pertaining to the KodeKloud Kubernetes Absolute Beginner course
-#+hugo_lastmod: Time-stamp: <2022-03-20 22:29:48 (arterro)>
+#+hugo_lastmod: Time-stamp: <2022-04-22 16:35:02 (adelgado)>
 
 * Kubernetes Overview
 
@@ -96,11 +96,11 @@ Pods share a 1:1 relation with container images running the application. If you 
 Pods can contain multiple images, doesn't have to be just one. For example, in the case of needing a helper container to go along with the application container.
 
 #+begin_src shell
-    # Creating a Pod with image pulled from Dockerhub
-    kubectl run nginx --image nginx
+  # Creating a Pod with image pulled from Dockerhub
+  kubectl run nginx --image nginx
 
-    # View Pods
-    kubectl get pods
+  # View Pods
+  kubectl get pods
 #+end_src
 
 * Kubernetes Concepts - PODs, ReplicaSets, Deployments
@@ -123,3 +123,164 @@ Kubernetes uses YAML files as inputs for the creation of objects and follows the
       - name: nginx-container
         image: nginx
 #+end_src
+
+#+begin_src shell
+  # Command to create object using YAML
+  kubectl create -f pod-definition.yaml
+#+end_src
+
+*Example of Kubernetes objects and their versions:*
+
+#+ATTR_LATEX: :center nil
+| Kind       | Version |
+|------------+---------|
+| /          | <>      |
+| Pod        | v1      |
+|------------+---------|
+| Service    | v1      |
+|------------+---------|
+| ReplicaSet | apps/v1 |
+|------------+---------|
+| Deployment | apps/v1 |
+|------------+---------|
+
+*Four common top level fields that reside in a manifest file, data type defined within brackets []*:
+
+  : apiVersion [string]
+  : -----
+  : Defines the api version of Kubernetes to use to create the object.
+
+  : kind [string]
+  : -----
+  : Refers to the type of object to be created.
+
+  : metadata [dictionary]
+  : -----
+  : Definition data of the object like name, labels, etc. To note, you can only specify properties
+  : that Kubernetes expects under metadata, for labels it can be a user defined key-value pair.
+
+  : spec [dictionary]
+  : -----
+  : Defines the specification for the object kind to be created.
+
+** ReplicationControllers and ReplicaSets
+
+Controllers are the brains behind Kubernetes, processes that monitor Kubernetes objects.
+
+ReplicationController / ReplicaSets helps us manage multiple instances of a single pod. Say you have an application in a pod and that goes ლ(ಠ益ಠ)ლ, you'd want to have another instance running so users don't lose access to the application.
+
+Even if using one instance, the ReplicationController / ReplicaSet will ensure that if the single pod goes unhealthy, a new pod instance is brought up. It makes it so our application has high availability, which also helps with load balancing and scaling. If the load increases we can spin up additional instances or even expand to new nodes within the cluster if resources start to become limited.
+
+*** ReplicationController
+
+ReplicationController is an older technology which will be replaced by ReplicaSet.
+
+#+begin_src yaml
+  # rc-definition.yaml
+  apiVersion: v1
+  kind: ReplicationController
+  metada:
+    name: myapp-rc
+    labels:
+      app: myapp
+      type: front-end
+  spec:
+    template:
+      metadata:
+        name: myapp-pod
+        labels:
+          app: myapp
+          type: front-end
+      spec:
+        containers:
+          - name: nginx-container
+            image: nginx
+    replicas: 3
+#+end_src
+
+#+begin_src shell
+  # Command to create the replication controller
+  kubectl create -f rc-definition.yaml
+
+  # Command to get replication controllers
+  kubectl get replicationcontroller
+
+  # Command to get pods
+  kubectl get po
+#+end_src
+
+*** ReplicaSet
+
+Recommend way to setup replication.
+
+Aside from the ~apiVersion~ and the ~kind~ differing from the YAML construct of the ReplicaController, a property that must be defined is a ~selector~.
+
+A ~selector~ defines what pods fall under the ReplicaSet; you may notice pods are defined in the ~template~ of the ReplicaSet, but a ReplicaSet can manage pods /not/ defined in the YAML configuration, like pods created prior to the ReplicaSet.
+
+#+begin_src yaml
+  # replicaset-definition.yaml
+  apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    name: myapp-replicaset
+    labels:
+      app: myapp
+      type: front-end
+  spec:
+    template:
+      metadata:
+        name: myapp-pod
+        labels:
+          app: myapp
+          type: front-end
+      spec:
+        containers:
+          - name: nginx-container
+            image: nginx
+    replicas: 3
+    selector:
+      matchLabels:
+        type: front-end
+#+end_src
+
+#+begin_src shell
+  # Command to create the replica set
+  kubectl create -f replicaset-definition.yaml
+
+  # Command to get replica sets
+  kubectl get replicaset
+
+  # Command to get pods
+  kubectl get po
+#+end_src
+
+The ~template~ section is required in case of a pod failure; ReplicaSet needs to create a new one to keep within the replicas defined and to do so the ReplicaSet ~template~ section is required.
+
+**** Scaling
+
+There are three ways to scale a ReplicaSet if necessary:
+
+1. Edit the definition file and edit the ~replicas~ property and run the ~kubectl replace~ command to update the ReplicaSet
+
+#+begin_src shell
+  kubectl replace -f replicaset-definition.yaml
+#+end_src
+
+2. Running the ~kubectl scale~ command and referencing how many replicas are wanted and to which definition file / ReplicaSet name to apply
+
+#+begin_src shell
+  # Definition File
+  # Does not modify the original value in the file
+  kubectl scale --replicas 6 -f replicaset-definition.yaml
+
+  # ReplicaSet Name
+  kubectl scale --replicas 6 -f replicaset myapp-replicaset
+#+end_src
+
+3. Can be setup by load -- but too advanced for this primer ༼☯﹏☯༽
+
+**** Labels and Selectors
+
+It is the key to help in managing the many different resources that are available within Kubernetes. In this instance, we may have hundreds of pods deployed and if we wish to monitor them via a ReplicationController / ReplicaSet we can do so via the labels we define on the pods at creation.
+
+* Deployments
