@@ -3,11 +3,12 @@
 :END:
 #+TITLE: Kubernetes Absolute Beginner
 #+DESCRIPTION: Notes pertaining to the KodeKloud Kubernetes Absolute Beginner course
-#+hugo_lastmod: Time-stamp: <2022-04-22 16:35:02 (adelgado)>
+#+OPTIONS: toc:t
+#+hugo_lastmod: Time-stamp: <2022-04-26 00:19:47 (arterro)>
+#+hugo_code_fence: nil
+#+hugo_section: posts
 
 * Kubernetes Overview
-
------
 
 Kubernetes (K8s) was initially built by Google but is now an open-source project (CNCF).
 
@@ -131,10 +132,9 @@ Kubernetes uses YAML files as inputs for the creation of objects and follows the
 
 *Example of Kubernetes objects and their versions:*
 
-#+ATTR_LATEX: :center nil
+#+attr_css: :width 100%
 | Kind       | Version |
 |------------+---------|
-| /          | <>      |
 | Pod        | v1      |
 |------------+---------|
 | Service    | v1      |
@@ -144,7 +144,7 @@ Kubernetes uses YAML files as inputs for the creation of objects and follows the
 | Deployment | apps/v1 |
 |------------+---------|
 
-*Four common top level fields that reside in a manifest file, data type defined within brackets []*:
+*Four common top level fields that reside in a manifest file, YAML data type is defined within brackets []*:
 
   : apiVersion [string]
   : -----
@@ -211,7 +211,7 @@ ReplicationController is an older technology which will be replaced by ReplicaSe
 
 *** ReplicaSet
 
-Recommend way to setup replication.
+Recommended way to setup replication.
 
 Aside from the ~apiVersion~ and the ~kind~ differing from the YAML construct of the ReplicaController, a property that must be defined is a ~selector~.
 
@@ -261,21 +261,19 @@ The ~template~ section is required in case of a pod failure; ReplicaSet needs to
 There are three ways to scale a ReplicaSet if necessary:
 
 1. Edit the definition file and edit the ~replicas~ property and run the ~kubectl replace~ command to update the ReplicaSet
-
-#+begin_src shell
+  #+begin_src shell
   kubectl replace -f replicaset-definition.yaml
-#+end_src
+  #+end_src
 
 2. Running the ~kubectl scale~ command and referencing how many replicas are wanted and to which definition file / ReplicaSet name to apply
-
-#+begin_src shell
+   #+begin_src shell
   # Definition File
   # Does not modify the original value in the file
   kubectl scale --replicas 6 -f replicaset-definition.yaml
 
   # ReplicaSet Name
   kubectl scale --replicas 6 -f replicaset myapp-replicaset
-#+end_src
+   #+end_src
 
 3. Can be setup by load -- but too advanced for this primer ༼☯﹏☯༽
 
