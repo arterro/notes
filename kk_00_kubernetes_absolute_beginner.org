@@ -1,12 +1,13 @@
 :PROPERTIES:
 :ID:       acbcd7fd-a200-4da9-911a-abadca83f1ca
 :END:
-#+TITLE: Kubernetes Absolute Beginner
-#+DESCRIPTION: Notes pertaining to the KodeKloud Kubernetes Absolute Beginner course
-#+OPTIONS: toc:t
-#+hugo_lastmod: Time-stamp: <2022-04-26 00:19:47 (arterro)>
+#+title: Kubernetes Absolute Beginner
+#+hugo_custom_front_matter: :summary Notes pertaining to the KodeKloud Kubernetes Absolute Beginner course
+#+hugo_lastmod: Time-stamp: <2022-04-27 17:58:21 (adelgado)>
 #+hugo_code_fence: nil
-#+hugo_section: posts
+#+hugo_section: notes
+#+hugo_draft: false
+#+hugo_tags: kubernetes
 
 * Kubernetes Overview
 
@@ -33,12 +34,14 @@ Container Orchestration is the process of automatically deploying and managing c
 ** Kubernetes Architecture
 
   : Nodes
+  : -----
   : A physical / virtual worker machine where K8s is installed and containers are launched
 
 If the node fails, what happens? Application goes down! (╥﹏╥)
 Don't fear cause we have clusters!
 
   : Cluster
+  : -----
   : Set of nodes grouped together
 
 If one node fails the application keeps chugging about as it can be accessed from the other nodes. Having multiple nodes also helps in sharing load.
@@ -46,6 +49,7 @@ If one node fails the application keeps chugging about as it can be accessed fro
 Cool, who's gonna manage all of this (the cluster)?
 
   : Master
+  : -----
   : A node with k8s installed on it, configured as a master that watches over the nodes in the cluster.
 
 Watches over the nodes in the cluster and is responsible for the orchestration of containrs on the worker nodes.
@@ -90,6 +94,7 @@ minikube is developer friendly and good for testing purposes, as it bundles all 
 Kubernetes does not deploy containers directly on the worker nodes; instead are encapsulated into a Kubernetes object known as a *Pod*.
 
   : Pod
+  : -----
   : Single instance of an application, the smallest object that can be created in Kubernetes.
 
 Pods share a 1:1 relation with container images running the application. If you need to scale up, you add more pods and remove pods to scale down.
@@ -132,7 +137,7 @@ Kubernetes uses YAML files as inputs for the creation of objects and follows the
 
 *Example of Kubernetes objects and their versions:*
 
-#+attr_css: :width 100%
+#+attr_html: :class table-striped table-hover
 | Kind       | Version |
 |------------+---------|
 | Pod        | v1      |
@@ -156,8 +161,7 @@ Kubernetes uses YAML files as inputs for the creation of objects and follows the
 
   : metadata [dictionary]
   : -----
-  : Definition data of the object like name, labels, etc. To note, you can only specify properties
-  : that Kubernetes expects under metadata, for labels it can be a user defined key-value pair.
+  : Definition data of the object like name, labels, etc. To note, you can only specify properties that Kubernetes expects under metadata, for labels it can be a user defined key-value pair.
 
   : spec [dictionary]
   : -----
@@ -217,68 +221,217 @@ Aside from the ~apiVersion~ and the ~kind~ differing from the YAML construct of 
 
 A ~selector~ defines what pods fall under the ReplicaSet; you may notice pods are defined in the ~template~ of the ReplicaSet, but a ReplicaSet can manage pods /not/ defined in the YAML configuration, like pods created prior to the ReplicaSet.
 
-#+begin_src yaml
-  # replicaset-definition.yaml
-  apiVersion: apps/v1
-  kind: ReplicaSet
-  metadata:
-    name: myapp-replicaset
-    labels:
-      app: myapp
-      type: front-end
-  spec:
-    template:
-      metadata:
-        name: myapp-pod
-        labels:
-          app: myapp
-          type: front-end
-      spec:
-        containers:
-          - name: nginx-container
-            image: nginx
-    replicas: 3
-    selector:
-      matchLabels:
+#+begin_src yaml :tangle run/replicaset-definition.yaml :eval no
+# replicaset-definition.yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
         type: front-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      type: front-end
 #+end_src
 
-#+begin_src shell
-  # Command to create the replica set
-  kubectl create -f replicaset-definition.yaml
+#+begin_src sh :dir run :exports both :results code :eval no-export
+# Command to create the replica set
+kubectl create -f replicaset-definition.yaml
+#+end_src
 
-  # Command to get replica sets
-  kubectl get replicaset
+#+RESULTS:
+#+begin_src sh
+replicaset.apps/myapp-replicaset created
+#+end_src
 
-  # Command to get pods
-  kubectl get po
+#+begin_src sh :exports both :results code :eval no-export
+# Command to get replica sets
+kubectl get replicaset
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME               DESIRED   CURRENT   READY   AGE
+myapp-replicaset   3         3         3       25s
+#+end_src
+
+#+begin_src sh :exports both :results code :eval no-export
+# Command to get pods
+kubectl get po
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME                     READY   STATUS    RESTARTS   AGE
+myapp-replicaset-lxmnh   1/1     Running   0          31s
+myapp-replicaset-q8mdz   1/1     Running   0          31s
+myapp-replicaset-vsjqr   1/1     Running   0          31s
 #+end_src
 
 The ~template~ section is required in case of a pod failure; ReplicaSet needs to create a new one to keep within the replicas defined and to do so the ReplicaSet ~template~ section is required.
 
-**** Scaling
+*Scaling*
 
 There are three ways to scale a ReplicaSet if necessary:
 
-1. Edit the definition file and edit the ~replicas~ property and run the ~kubectl replace~ command to update the ReplicaSet
-  #+begin_src shell
-  kubectl replace -f replicaset-definition.yaml
-  #+end_src
++ Edit the definition file and edit the ~replicas~ property and run the ~kubectl replace~ command to update the ReplicaSet
 
-2. Running the ~kubectl scale~ command and referencing how many replicas are wanted and to which definition file / ReplicaSet name to apply
-   #+begin_src shell
-  # Definition File
-  # Does not modify the original value in the file
-  kubectl scale --replicas 6 -f replicaset-definition.yaml
+#+begin_src yaml :tangle run/replicaset-definition.yaml :eval no
+# replicaset-definition.yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 10
+  selector:
+    matchLabels:
+      type: front-end
+#+end_src
 
-  # ReplicaSet Name
-  kubectl scale --replicas 6 -f replicaset myapp-replicaset
-   #+end_src
+#+begin_src sh :dir run :exports both :results code :eval no-export
+kubectl replace -f replicaset-definition.yaml
+#+end_src
 
-3. Can be setup by load -- but too advanced for this primer ༼☯﹏☯༽
+#+RESULTS:
+#+begin_src sh
+replicaset.apps/myapp-replicaset replaced
+#+end_src
 
-**** Labels and Selectors
+#+begin_src sh :exports both :results code :eval no-export
+kubectl get replicaset
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME               DESIRED   CURRENT   READY   AGE
+myapp-replicaset   10        10        10      6m18s
+#+end_src
+
++ Running the ~kubectl scale~ command and referencing how many replicas are wanted and to which definition file / ReplicaSet name to apply
+
+#+begin_src sh :dir run :exports both :results code :eval no-export
+# Definition File
+# Does not modify the original value in the file
+kubectl scale --replicas 6 -f replicaset-definition.yaml
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+replicaset.apps/myapp-replicaset scaled
+#+end_src
+
+#+begin_src sh :exports both :results code :eval no-export
+kubectl get replicaset
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME               DESIRED   CURRENT   READY   AGE
+myapp-replicaset   6         6         6       6m28s
+#+end_src
+
+#+begin_src sh :exports both :results code :eval no-export
+# ReplicaSet Name
+kubectl scale --replicas 2 replicaset myapp-replicaset
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+replicaset.apps/myapp-replicaset scaled
+#+end_src
+
+#+begin_src sh :exports both :results code :eval no-export
+kubectl get replicaset
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME               DESIRED   CURRENT   READY   AGE
+myapp-replicaset   2         2         2       8m23s
+#+end_src
+
+#+begin_src sh :dir run :exports both :results code :eval no-export
+cat replicaset-definition.yaml
+#+end_src
+
++ Can be setup by load -- but too advanced for this primer ༼☯﹏☯༽
+
+*Labels and Selectors*
 
 It is the key to help in managing the many different resources that are available within Kubernetes. In this instance, we may have hundreds of pods deployed and if we wish to monitor them via a ReplicationController / ReplicaSet we can do so via the labels we define on the pods at creation.
 
 * Deployments
+
+#+begin_src yaml :tangle run/deployment-definition.yaml :eval no
+# deployment-definition.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: front-end
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+#+end_src
+
+#+begin_src sh :dir run :exports both :results output code :eval no-export
+# Command to create the deployment from the above manifest file
+kubectl create -f deployment-definition.yaml
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+deployment.apps/myapp-deployment created
+#+end_src
+
+#+begin_src sh :exports both :results code :eval no-export
+# Command to get all deployments
+kubectl get deployments
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+myapp-deployment   3/3     3            3           6s
+#+end_src
