@@ -3,17 +3,18 @@
 :END:
 #+title: Kubernetes Absolute Beginner
 #+hugo_custom_front_matter: :summary Notes pertaining to the KodeKloud Kubernetes Absolute Beginner course
-#+hugo_lastmod: Time-stamp: <2022-04-27 17:58:21 (adelgado)>
+#+hugo_lastmod: Time-stamp: <2022-04-27 22:09:26 (adelgado)>
 #+hugo_code_fence: nil
 #+hugo_section: notes
 #+hugo_draft: false
 #+hugo_tags: kubernetes
+#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
 
-* Kubernetes Overview
+* Overview
 
 Kubernetes (K8s) was initially built by Google but is now an open-source project (CNCF).
 
-** Containers Overview
+** Containers
 
 Containers are not a new concept and they've been around for 10+ years. They exist in other forms like LXC (hard, low-level) but Docker has become the defacto standard due to the ease it brings at a higher level to create containers.
 
@@ -81,7 +82,7 @@ All information gathered on the master node is stored in a key-value store using
 
 Also containers a *controller* and a *scheduler*.
 
-* Setup Kubernetes
+* Kubernetes Setup
 
 Can be setup locally directly on your host machine or a VM using solutions like *minikube* (dev friendly), *MicroK8s*, *Kubeadm* (production).
 
@@ -101,38 +102,56 @@ Pods share a 1:1 relation with container images running the application. If you 
 
 Pods can contain multiple images, doesn't have to be just one. For example, in the case of needing a helper container to go along with the application container.
 
-#+begin_src shell
-  # Creating a Pod with image pulled from Dockerhub
-  kubectl run nginx --image nginx
-
-  # View Pods
-  kubectl get pods
+#+begin_src sh
+# Creating a Pod with image pulled from Dockerhub
+kubectl run nginx --image nginx
 #+end_src
 
-* Kubernetes Concepts - PODs, ReplicaSets, Deployments
+#+RESULTS:
+#+begin_src sh
+pod/nginx created
+#+end_src
+
+#+begin_src sh
+# View Pods
+kubectl get pods
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME                     READY   STATUS    RESTARTS      AGE
+nginx                    1/1     Running   0             5s
+#+end_src
+
+* PODs, ReplicaSets and Deployments
 
 ** Pods with YAML
 
 Kubernetes uses YAML files as inputs for the creation of objects and follows the following structure for the four top level fields:
 
-#+begin_src yaml
-  # pod-definition.yaml
-  apiVersion: v1
-  kind: Pod
-  metadata:
-    name: myapp-pod
-    labels:
-      app: myapp
-      type: front-end
-  spec:
-    containers:
-      - name: nginx-container
-        image: nginx
+#+begin_src yaml :tangle run/pod-definition.yaml :eval no
+# pod-definition.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
 #+end_src
 
-#+begin_src shell
-  # Command to create object using YAML
-  kubectl create -f pod-definition.yaml
+#+begin_src sh
+# Command to create object using YAML
+kubectl create -f pod-definition.yaml
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+pod/myapp-pod created
 #+end_src
 
 *Example of Kubernetes objects and their versions:*
@@ -179,38 +198,61 @@ Even if using one instance, the ReplicationController / ReplicaSet will ensure t
 
 ReplicationController is an older technology which will be replaced by ReplicaSet.
 
-#+begin_src yaml
-  # rc-definition.yaml
-  apiVersion: v1
-  kind: ReplicationController
-  metada:
-    name: myapp-rc
-    labels:
-      app: myapp
-      type: front-end
-  spec:
-    template:
-      metadata:
-        name: myapp-pod
-        labels:
-          app: myapp
-          type: front-end
-      spec:
-        containers:
-          - name: nginx-container
-            image: nginx
-    replicas: 3
+#+begin_src yaml :tangle run/rc-definition.yaml
+# rc-definition.yaml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 3
 #+end_src
 
-#+begin_src shell
-  # Command to create the replication controller
-  kubectl create -f rc-definition.yaml
+#+begin_src sh
+# Command to create the replication controller
+kubectl create -f rc-definition.yaml
+#+end_src
 
-  # Command to get replication controllers
-  kubectl get replicationcontroller
+#+RESULTS:
+#+begin_src sh
+replicationcontroller/myapp-rc created
+#+end_src
 
-  # Command to get pods
-  kubectl get po
+#+begin_src sh
+# Command to get replication controllers
+kubectl get replicationcontroller
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME       DESIRED   CURRENT   READY   AGE
+myapp-rc   3         3         3       9s
+#+end_src
+
+#+begin_src sh
+# Command to get pods
+kubectl get po
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME                     READY   STATUS    RESTARTS        AGE
+myapp-rc-bdrmp           1/1     Running   0               15s
+myapp-rc-cxcd5           1/1     Running   0               15s
+myapp-rc-xtrnp           1/1     Running   0               15s
 #+end_src
 
 *** ReplicaSet
@@ -221,7 +263,7 @@ Aside from the ~apiVersion~ and the ~kind~ differing from the YAML construct of 
 
 A ~selector~ defines what pods fall under the ReplicaSet; you may notice pods are defined in the ~template~ of the ReplicaSet, but a ReplicaSet can manage pods /not/ defined in the YAML configuration, like pods created prior to the ReplicaSet.
 
-#+begin_src yaml :tangle run/replicaset-definition.yaml :eval no
+#+begin_src yaml :tangle run/replicaset-definition.yaml
 # replicaset-definition.yaml
 apiVersion: apps/v1
 kind: ReplicaSet
@@ -247,7 +289,7 @@ spec:
       type: front-end
 #+end_src
 
-#+begin_src sh :dir run :exports both :results code :eval no-export
+#+begin_src sh
 # Command to create the replica set
 kubectl create -f replicaset-definition.yaml
 #+end_src
@@ -257,7 +299,7 @@ kubectl create -f replicaset-definition.yaml
 replicaset.apps/myapp-replicaset created
 #+end_src
 
-#+begin_src sh :exports both :results code :eval no-export
+#+begin_src sh
 # Command to get replica sets
 kubectl get replicaset
 #+end_src
@@ -268,7 +310,7 @@ NAME               DESIRED   CURRENT   READY   AGE
 myapp-replicaset   3         3         3       25s
 #+end_src
 
-#+begin_src sh :exports both :results code :eval no-export
+#+begin_src sh
 # Command to get pods
 kubectl get po
 #+end_src
@@ -287,9 +329,10 @@ The ~template~ section is required in case of a pod failure; ReplicaSet needs to
 
 There are three ways to scale a ReplicaSet if necessary:
 
-+ Edit the definition file and edit the ~replicas~ property and run the ~kubectl replace~ command to update the ReplicaSet
+*FIRST METHOD*\\
+Edit the definition file and edit the ~replicas~ property and run the ~kubectl replace~ command to update the ReplicaSet
 
-#+begin_src yaml :tangle run/replicaset-definition.yaml :eval no
+#+begin_src yaml :tangle run/replicaset-definition.yaml
 # replicaset-definition.yaml
 apiVersion: apps/v1
 kind: ReplicaSet
@@ -315,7 +358,7 @@ spec:
       type: front-end
 #+end_src
 
-#+begin_src sh :dir run :exports both :results code :eval no-export
+#+begin_src sh
 kubectl replace -f replicaset-definition.yaml
 #+end_src
 
@@ -324,7 +367,7 @@ kubectl replace -f replicaset-definition.yaml
 replicaset.apps/myapp-replicaset replaced
 #+end_src
 
-#+begin_src sh :exports both :results code :eval no-export
+#+begin_src sh
 kubectl get replicaset
 #+end_src
 
@@ -334,9 +377,10 @@ NAME               DESIRED   CURRENT   READY   AGE
 myapp-replicaset   10        10        10      6m18s
 #+end_src
 
-+ Running the ~kubectl scale~ command and referencing how many replicas are wanted and to which definition file / ReplicaSet name to apply
+*SECOND METHOD*\\
+Running the ~kubectl scale~ command and referencing how many replicas are wanted and to which definition file / ReplicaSet name to apply
 
-#+begin_src sh :dir run :exports both :results code :eval no-export
+#+begin_src sh
 # Definition File
 # Does not modify the original value in the file
 kubectl scale --replicas 6 -f replicaset-definition.yaml
@@ -347,7 +391,7 @@ kubectl scale --replicas 6 -f replicaset-definition.yaml
 replicaset.apps/myapp-replicaset scaled
 #+end_src
 
-#+begin_src sh :exports both :results code :eval no-export
+#+begin_src sh
 kubectl get replicaset
 #+end_src
 
@@ -357,7 +401,7 @@ NAME               DESIRED   CURRENT   READY   AGE
 myapp-replicaset   6         6         6       6m28s
 #+end_src
 
-#+begin_src sh :exports both :results code :eval no-export
+#+begin_src sh
 # ReplicaSet Name
 kubectl scale --replicas 2 replicaset myapp-replicaset
 #+end_src
@@ -367,7 +411,7 @@ kubectl scale --replicas 2 replicaset myapp-replicaset
 replicaset.apps/myapp-replicaset scaled
 #+end_src
 
-#+begin_src sh :exports both :results code :eval no-export
+#+begin_src sh
 kubectl get replicaset
 #+end_src
 
@@ -377,11 +421,8 @@ NAME               DESIRED   CURRENT   READY   AGE
 myapp-replicaset   2         2         2       8m23s
 #+end_src
 
-#+begin_src sh :dir run :exports both :results code :eval no-export
-cat replicaset-definition.yaml
-#+end_src
-
-+ Can be setup by load -- but too advanced for this primer ༼☯﹏☯༽
+*THIRD METHOD*\\
+Can be setup by load -- but too advanced for this primer ༼☯﹏☯༽
 
 *Labels and Selectors*
 
@@ -389,7 +430,7 @@ It is the key to help in managing the many different resources that are availabl
 
 * Deployments
 
-#+begin_src yaml :tangle run/deployment-definition.yaml :eval no
+#+begin_src yaml :tangle run/deployment-definition.yaml
 # deployment-definition.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -415,7 +456,7 @@ spec:
           image: nginx
 #+end_src
 
-#+begin_src sh :dir run :exports both :results output code :eval no-export
+#+begin_src sh
 # Command to create the deployment from the above manifest file
 kubectl create -f deployment-definition.yaml
 #+end_src
@@ -425,7 +466,7 @@ kubectl create -f deployment-definition.yaml
 deployment.apps/myapp-deployment created
 #+end_src
 
-#+begin_src sh :exports both :results code :eval no-export
+#+begin_src sh
 # Command to get all deployments
 kubectl get deployments
 #+end_src
@@ -433,5 +474,5 @@ kubectl get deployments
 #+RESULTS:
 #+begin_src sh
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
-myapp-deployment   3/3     3            3           6s
+myapp-deployment   3/3     3            3           4s
 #+end_src
