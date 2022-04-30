@@ -3,12 +3,13 @@
 :END:
 #+title: Kubernetes Absolute Beginner
 #+hugo_custom_front_matter: :summary Notes pertaining to the KodeKloud Kubernetes Absolute Beginner course
-#+hugo_lastmod: Time-stamp: <2022-04-27 22:09:26 (adelgado)>
+#+hugo_lastmod: Time-stamp: <2022-04-29 13:00:15 (adelgado)>
 #+hugo_code_fence: nil
 #+hugo_section: notes
 #+hugo_draft: false
 #+hugo_tags: kubernetes
 #+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
+#+export_file_name: k8s-absolute-beginner
 
 * Overview
 
@@ -430,6 +431,15 @@ It is the key to help in managing the many different resources that are availabl
 
 * Deployments
 
+A deployment encompasses the following:
+
++ Deploying many instance of an application.
++ Upgrading the application instances seamlessly, with an option to upgrade them one after the other instead of all at once which is known as a rolling update.
++ Being able to rollback changes in case of an error
++ Allowing to scale, allocate resources and other actions without having it done immediately but in steps (pausing the environment, make the changes and resume the environment so it happens in sync)
+
+The following is an example of a deployment manifest file:
+
 #+begin_src yaml :tangle run/deployment-definition.yaml
 # deployment-definition.yaml
 apiVersion: apps/v1
@@ -476,3 +486,45 @@ kubectl get deployments
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 myapp-deployment   3/3     3            3           4s
 #+end_src
+
+#+begin_src sh
+# Command to describe the deployment
+kubectl describe deployment myapp-deployment
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+Name:                   myapp-deployment
+Namespace:              default
+CreationTimestamp:      Wed, 27 Apr 2022 21:42:15 -0700
+Labels:                 app=myapp
+                        type=front-end
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               type=front-end
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=myapp
+           type=front-end
+  Containers:
+   nginx-container:
+    Image:        nginx
+    Port:         <none>
+    Host Port:    <none>
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   myapp-replicaset (3/3 replicas created)
+Events:          <none>
+#+end_src
+
+
+*** Update and Rollback
