@@ -3,7 +3,7 @@
 :END:
 #+title: Kubernetes Absolute Beginner
 #+hugo_custom_front_matter: :summary Notes pertaining to the KodeKloud Kubernetes Absolute Beginner course
-#+hugo_lastmod: Time-stamp: <2022-04-29 13:00:15 (adelgado)>
+#+hugo_auto_set_lastmod: t
 #+hugo_code_fence: nil
 #+hugo_section: notes
 #+hugo_draft: false
@@ -326,11 +326,11 @@ myapp-replicaset-vsjqr   1/1     Running   0          31s
 
 The ~template~ section is required in case of a pod failure; ReplicaSet needs to create a new one to keep within the replicas defined and to do so the ReplicaSet ~template~ section is required.
 
-*Scaling*
+------ *Scaling* ------
 
 There are three ways to scale a ReplicaSet if necessary:
 
-*FIRST METHOD*\\
+*First Method* \\
 Edit the definition file and edit the ~replicas~ property and run the ~kubectl replace~ command to update the ReplicaSet
 
 #+begin_src yaml :tangle run/replicaset-definition.yaml
@@ -378,7 +378,7 @@ NAME               DESIRED   CURRENT   READY   AGE
 myapp-replicaset   10        10        10      6m18s
 #+end_src
 
-*SECOND METHOD*\\
+*Second Method* \\
 Running the ~kubectl scale~ command and referencing how many replicas are wanted and to which definition file / ReplicaSet name to apply
 
 #+begin_src sh
@@ -422,10 +422,10 @@ NAME               DESIRED   CURRENT   READY   AGE
 myapp-replicaset   2         2         2       8m23s
 #+end_src
 
-*THIRD METHOD*\\
+*Third Method* \\
 Can be setup by load -- but too advanced for this primer ༼☯﹏☯༽
 
-*Labels and Selectors*
+------ *Labels and Selectors* ------
 
 It is the key to help in managing the many different resources that are available within Kubernetes. In this instance, we may have hundreds of pods deployed and if we wish to monitor them via a ReplicationController / ReplicaSet we can do so via the labels we define on the pods at creation.
 
@@ -434,7 +434,7 @@ It is the key to help in managing the many different resources that are availabl
 A deployment encompasses the following:
 
 + Deploying many instance of an application.
-+ Upgrading the application instances seamlessly, with an option to upgrade them one after the other instead of all at once which is known as a rolling update.
++ Upgrading the application instances seamlessly, with an option to upgrade them one after the other instead of all at once which is known as a rolling update (default action).
 + Being able to rollback changes in case of an error
 + Allowing to scale, allocate resources and other actions without having it done immediately but in steps (pausing the environment, make the changes and resume the environment so it happens in sync)
 
@@ -527,4 +527,74 @@ Events:          <none>
 #+end_src
 
 
-*** Update and Rollback
+*** Updates and Rollback
+
+When creating a deployment, a rollout is triggered and if it's a new Deployment; in turn creates a Deployment revision.
+
+When an upgrade is done where the pod's ~.spec.template~ is changed for a Deployment, a new Deployment revision is created, keeping a history of the previous Deployment revisions to be able to rollback. As a note, updates done outside of the ~.spec.template~ in a Deployment do not create a revision.
+
+#+begin_src sh
+# Command to view the status of a Deployment
+kubectl rollout status deployment/myapp-deployment
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+deployment "myapp-deployment" successfully rolled out
+#+end_src
+
+#+begin_src sh
+# Command to view the rollout history of a Deployment
+kubectl rollout history deployment/myapp-deployment
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+deployment.apps/myapp-deployment
+REVISION  CHANGE-CAUSE
+1         <none>
+
+#+end_src
+
+------ *Deployment Strategy* ------
+
+There are two strategies that can be used, ~Recreate~ and ~Rolling Update~.
+
+*Recreate* \\
+This strategy will delete all instances of your application first and then recreate the new updated instances afterwards. Keep in mind, that this can cause service interruption to your application as it will be non-existant until the new updated instances come online.
+
+*Rolling Update* [default] \\
+This strategy will delete the application instance and bring up the updated instance one by one, it is also the default stretegy used by Kubernetes. Keeps the application running and makes the update seamless with no downtime.
+
+------ *Commands* ------ \\
+
+#+begin_src sh
+# Create
+kubectl create -f /path/to/definition.yaml
+#+end_src
+
+#+begin_src sh
+# Get
+kubectl get deployments
+#+end_src
+
+#+begin_src sh
+# Updating
+kubectl apply -f /path/to/definition.yaml
+
+kubectl set image deployment/name-of-deployment container-name=new-image-version
+#+end_src
+
+#+begin_src sh
+# Status
+kubectl rollout status deployment/name-of-deployment
+
+kubectl rollout history deployment/name-of-deployment
+#+end_src
+
+#+begin_src sh
+# Rollback
+kubectl rollout undo deployment/name-of-deployment
+#+end_src
+
+* Networking in Kubernetes
