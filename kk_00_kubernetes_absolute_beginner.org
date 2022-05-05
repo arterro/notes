@@ -130,7 +130,7 @@ nginx                    1/1     Running   0             5s
 
 Kubernetes uses YAML files as inputs for the creation of objects and follows the following structure for the four top level fields:
 
-#+begin_src yaml :tangle run/pod-definition.yaml :eval no
+#+begin_src yaml :tangle run/pod-definition.yaml
 # pod-definition.yaml
 apiVersion: v1
 kind: Pod
@@ -598,3 +598,105 @@ kubectl rollout undo deployment/name-of-deployment
 #+end_src
 
 * Networking in Kubernetes
+
+Nodes have their own IP addresses and this is what is used to access the Kubernetes node. Pods inside the node get their own internal IP address, which is derived from the internal private network configured when Kubernetes is initialized. As new pods come online inside the node they are assigned an IP from the configured network.
+
+When there are multiple nodes inside a Kubernetes Cluster there could be an IP conflict between the pods as they may share the same internal IP address. Kubernetes does not setup any networking automatically within the cluster to solve this issue, this is something that has to be handled ourselves with some fundamental requirements.
+
++ All containers/PODs can communicate with one another without NAT
++ All nodes can communicate with all containers and vice versa without NAT
+
+Luckily, there exists third-party solutions to facilitate this process such as [[https://landscape.cncf.io/card-mode?category=cloud-native-network&grouping=category][Calico, Cilium, Weave Net and others]]. Which will manage the IP's and networks across the nodes and assign a distinct network address for each of the networks in the node, creating a virtual network.
+
+* Services
+
+** NodePort
+
+#+begin_src yaml :tangle run/service-definition.yaml
+#service-definition.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+  # can also have labels like other objects
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30008
+  selector:
+    app: myapp
+#+end_src
+
+In the ports array the only required parameter is ~port~. If no ~targetPort~ is defined it will assume to use the same port as the ~port~ defined and if ~nodePort~ is not defined it will assign an available port within the 30000-32767 range.
+
+To link the Service NodePort to the target pod(s), we use the ~selector~ property to specify the labels assigned to the pods.
+
+*Creating the Service*
+
+#+begin_src sh
+kubectl create -f service-definition.yaml
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+service/myapp-service created
+#+end_src
+
+*Getting the Services*
+
+#+begin_src sh
+kubectl get svc
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubernetes      ClusterIP   10.96.0.1       <none>        443/TCP        55d
+myapp-service   NodePort    10.109.94.212   <none>        80:30008/TCP   51s
+#+end_src
+
+If using minikube, the following command can be ran to get the node IP with the NodePort:
+
+#+begin_src sh
+minikube service myapp-service --url
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+http://192.168.59.101:30008
+#+end_src
+
+With the node IP and NodePort provided we can now use curl to demonstrate the service operating successfully:
+
+#+begin_src sh
+curl http://192.168.59.101:30008
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+#+end_src
