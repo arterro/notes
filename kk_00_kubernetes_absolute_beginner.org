@@ -612,7 +612,7 @@ Luckily, there exists third-party solutions to facilitate this process such as [
 
 ** NodePort
 
-#+begin_src yaml :tangle run/service-definition.yaml
+#+begin_src yaml :tangle run/service-nodeport-definition.yaml
 #service-definition.yaml
 apiVersion: v1
 kind: Service
@@ -633,10 +633,10 @@ In the ports array the only required parameter is ~port~. If no ~targetPort~ is 
 
 To link the Service NodePort to the target pod(s), we use the ~selector~ property to specify the labels assigned to the pods.
 
-*Creating the Service*
+*Viewing the Services*
 
 #+begin_src sh
-kubectl create -f service-definition.yaml
+kubectl create -f service-nodeport-definition.yaml
 #+end_src
 
 #+RESULTS:
@@ -700,3 +700,49 @@ Commercial support is available at
 </body>
 </html>
 #+end_src
+
+** ClusterIP
+
+#+begin_src yaml :tangle run/service-clusterip-definition.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-end
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 80
+      port: 80
+  selector:
+    app: myapp
+#+end_src
+
+As a note the default type for a ~Service~ is ~ClusterIP~, without specifying the type that would be the default used. Within the ports, ~targetPort~ would be the exposed port for the pods and the ~port~ is for the service.
+
+*Creating the Service*
+
+#+begin_src sh
+kubectl create -f service-clusterip-definition.yaml
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+service/back-end created
+#+end_src
+
+*Viewing the Services*
+
+#+begin_src sh
+kubectl get svc
+#+end_src
+
+#+RESULTS:
+#+begin_src sh
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+back-end     ClusterIP   10.108.247.81   <none>        80/TCP    41s
+kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP   51d
+#+end_src
+
+With this service in place, the service can now be accessed by other pods by using the ~name~ or ~cluster-ip~.
+
+* LoadBalancer
