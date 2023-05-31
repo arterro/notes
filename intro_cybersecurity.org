@@ -1,0 +1,157 @@
+#+title: Introduction to Cybersecurity
+
+* Introduction to Cybersecurity
+
+** McCumber Cube
+
+A model framework created by John McCumber in 1991 to help organizations establish and evaluate information security.
+The model is comprised of three dimensions:
+
+ + Foundational principles for protecting information systems
+ + Protection of information in each possible state
+ + Security measures used to protect data
+
+*** Foundational Principles for Protecting Information Systems
+
+**** Confidentiality
+
+A set of rules that prevents sensitive information from being disclosed to unauthorized sources. Methods to ensure confidentiality include *data encryption*, *identity proofing,* and *two factor authentication*.
+
+**** Integrity
+
+Ensures that system information or processes are protected from intentional or accidental modification, which can be achieved via a *hash function* or *checksuum*.
+
+**** Availability
+
+Authorized users are able to access systems and data when needed and for those who do not meet the authorization conditions are denied. It can be achieved by *maintaining equipment*, *performing hardware repairs*, *keeping operating systems and software up-to-date*, and *creating backups*.
+
+*** Protection of Information in Each State
+
+**** Processing
+
+Data that is being used to perform an operation such as updating a database record (data in process).
+
+**** Storage
+
+Data stored in memory or on a permanent storage device such as a hard drive, solid-state drive or USB drive (data at rest).
+
+**** Transmission
+
+Data traveling between information systems (data in transit).
+
+*** Security Measures Used to Protect Data
+
+**** Awareness, Training and Education
+
+Measures put in place by an organization to ensure that users are knowledgeable about potential security threats and the actions they can take to protect information systems.
+
+**** Technology
+
+Software and hardware based solutions designed to protect information systems such as firewalls, which continuously monitor your network in search of possible malicious incidents.
+
+**** Policy and Procedure
+
+Administrative controls that provide a foundation for how an organization implements information assurance, such as incident response plans and best practice guidelines.
+
+** Types of Attackers
+
+*** Script Kiddies
+
+Amateur / inexperienced hackers who use existing tools or instructions found on the Internet to launch attacks.
+
+*** Hackers
+
+**** White Hat
+
+Breaks into networks or computer systems to identify any weaknesses so that the security of a system or network can be improved, which are done with the consensus of the owner of such systems.
+
+**** Gray Hat
+
+Finds vulnerabilities in a system but they will only report their findings to the owners of a system if it coincides with any agendas they may hold or may just publish details about the vulnerability on the internet for others to exploit.
+
+**** Black Hat
+
+Takes advantage of any vulnerability for personal, financial or political gain, illegaly.
+
+*** Organized Hackers
+
+Organizations of cyber criminals, hacktivists, terrorists and state-sponsored attackers whom are highly sophisticated and organized, can be cyber mercenaries, providing their services to other criminals.
+
+While hacktivists make political statements to create awareness on issues they pursue, state-sponsored attackers are highly trained and well-funded attackers who gather intelligence / sabotage on behalf of their governments.
+
+** Internal and External Threats
+
+*** Internal
+
+Employees, contract staff or trusted partners can accidentally or intentionally:
+
+ + mishandle confidential data
+ + facilitate outside attacks by connecting infected USB media into the organization's computer system
+ + invited malware onto the organization's network by clicking on malicious emails or website
+ + threaten the operations of internal servers or network infrastructure devices
+
+*** External
+
+Amateurs or skilled attackers outside of the organization can:
+
+ + exploit vulnerabilities in the network
+ + gain unauthorized access to computing devices
+ + use social engineering to grain unauthorized access to organizatinal data
+
+* Attacks, Concepts and Techniques
+
+** Types of Malware
+
+Malicious software; malware, is utilized by cybercriminals to carry our illicit activities. It is code that can steal data, bypass access control, or cause harm/compromise a system.
+
+*** Spyware
+
+Designed to track and spy on you; monitoring online activity, logging every key press on the keyboard and almost any data like banking details. It bundles itself with legitimate software or Trojan horses to modify security settings on devices.
+
+*** Adware
+
+Often installed with versions of software and designed to automatically deliver advertisements to a user, most often via a web browser (constant pop-ups) and is common to come with spyware.
+
+*** Backdoor
+
+Used to gain unauthorized access by bypassing normal authentication procedures to a system, enabling remote access to resources within an application and issue system commands. A background malware that is difficult to detect.
+
+*** Ransomware
+
+Designed to hold an entire computer system or contained data captive by encrypting it until payment is made. Often spread through phishing emails that contains a malicious attachment or via a software vulnerability.
+
+*** Scareware
+
+Uses "scare" tactics to trick a user into taking a specific action by having operating system style windows pop-up to warn about a system being at risk and run a program to fix the issue which will then infect the system with malware.
+
+*** Rootkit
+
+Designed to modify an operating system to create a backdoor. Rootkits take advantage of software vulnerabilities to gain access to resources that shouldn't normally be accessed (privilege escalation) and modify system files. Rootkits can also modify system forensics / monitoring tools which makes them near undetectable. Once infected best to wipe the system and re-install all necessary software.
+
+*** Virus
+
+A program that when executed, replicates and attaches to other executable files, like a document, by inserting its own code. Viruses tend to require end-user interaction to activate them and can be programmed to act on a specific date or time. Though some viruses can be harmless pranks they can also be devastating by modifying or deleting data and be programmed to mutate itself to avoid detection. Viruses are most commonly spread by USB drives, optical disks, network shares or email.
+
+*** Trojan Horse
+
+Operates by masking itself as a legitimate software and exploit user privileges. Often found in image files, audio files or games and while it does not self-replicate it acts as a decoy to sneak other malicious software unto a system.
+
+*** Worms
+
+A self-replicating malware that spreads from one system to another which does not require end-user interaction for activation unlike a virus and spread very quickly over the network. They can exploit system vulnerabilities, propagate themselves, and contain malicious code (payload) to cause system and network damage. Responsible for some of the most devastating attacks, like the Code Red worm in 2001 which infected over 300K servers in 19 hours.
+
+** Symptoms of Malware
+
+ + Increase in CPU usage, slowing down the device
+ + Device constantly freezing or crashing
+ + Decrease in web browser speed
+ + Unexplainable problems with network connections
+ + Modified or deleted files
+ + Presence of unknown files, programs or desktop icons
+ + Unknown processes running
+ + Programs turning off or reconfiguring themselves
+ + Emails being sent without end-user knowledge or consent
+
+** Methods of Infiltration
+
+*** Social Engineering
