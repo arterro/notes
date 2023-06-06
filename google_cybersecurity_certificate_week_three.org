@@ -1,0 +1,48 @@
+#+title: Google Cybersecurity Professional Certificate - Week Three
+#+hugo_custom_front_matter: :summary Week Three of Google's Cybersecurity Certification
+#+hugo_auto_set_lastmod: t
+#+hugo_code_fence: nil
+#+hugo_section: notes
+#+hugo_draft: false
+#+hugo_tags: cybersecurity certificates google
+#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
+#+export_file_name: google-cybersec-cert-week-three
+
+* Foundations of Cybersecurity: Week 3
+
+Will cover about security frameworks and controls, which are used to mitigate organizational risk; covering principles of the Confidentiality, Integrity, and Availability (CIA) triad and National Institute of Standards and Technology (NIST) frameworks.
+
+ + Define security frameworks and controls
+ + Define the CIA triad and NIST CSF
+ + Discuss how the CIA triad and NIST CSF are used to develop procedures and processes to address security threats, risks, and vulnerabilities
+ + Explain security ethics
+
+** Protect Against Threats, Risks, and Vulnerabilities
+
+Security frameworks are guidelines used for building plans to help mitigate risks and threats to data and privacy, providing a structured approach to implementing a security lifecycle. The security lifecycle is a set of policies and standards that define how an organization manages risks, follows established guidelines, and meets regulatory compliance.
+
+Depending on the type of compliance risk, would entail the security framework to use; protecting PII, financial information, identifying security weaknesses, managing organizational risks, and aligning security with business goals.
+
+Frameworks are composed of four core components:
+
+*Identifying and Documenting Security Goals*
+
+As a security analyst, may be asked to identify and document areas where an organization may be out of compliance with the E.U.'s General Data Protection Regulation (GDPR).
+
+*Establishing Guidelines to Achieve Security Goals*
+
+While implementing guidelines to be compliant with GDPR, the organization may have to developer new policies for handling data requests from individual users.
+
+*Implementing Strong Security Processes*
+
+A social media company may help design procedures for the organization to be compliant with GDPR with verified user data requests; updating or deleting profile information.
+
+*Monitoring and Communicating Results*
+
+As a security analyst monitoring your organizations network for potential security issues that may affect compliance with GDPR and reporting it to a manager or regulatory compliance officer.
+
+Frameworks allow analysts to work alongside the security team to document, implement, and use the policies and procedures that have been created.
+
+Security controls are safeguards designed to reduce specific risks, such as a guideline for a company's employees to complete privacy training to reduce risk of data breaches, using a software to assign and track employee training participation.
+
+*** Secure Design
