@@ -1,14 +1,13 @@
-#+title: Google Cybersecurity Professional Certificate - Week One
-#+hugo_custom_front_matter: :summary Week One of Google's Cybersecurity Certification
-#+hugo_auto_set_lastmod: t
+#+title: Google Cybersecurity Professional Certificate - Course 01 | Week 01
+#+hugo_custom_front_matter: :summary Week One of Google's Cybersecurity Certification, Foundations of Cybersecurity
 #+hugo_code_fence: nil
-#+hugo_section: synapse
+#+hugo_section: notes
 #+hugo_draft: false
 #+hugo_tags: cybersecurity certificates google
 #+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
-#+export_file_name: google-cybersec-cert-week-one
+#+export_file_name: google-cybersec-cert-crse-01-wk-01
 
-* Foundations of Cybersecurity: Week 1
+* Foundations of Cybersecurity: Week One
 
 Skills in cybersecurity are in high demand as the world undergoes a digital transformation. Global access to the internet is expanding which introduces more devices, applications and a large amount of data to the web. In turn, threats, risks, and vulnerabilities are expanding which causes great harm to organizations and people.
 

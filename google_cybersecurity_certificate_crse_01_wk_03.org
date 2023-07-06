@@ -1,0 +1,175 @@
+#+title: Google Cybersecurity Professional Certificate - Course 01 | Week 03
+#+hugo_custom_front_matter: :summary Week Three of Google's Cybersecurity Certification, Foundations of Cybersecurity
+#+hugo_auto_set_lastmod: t
+#+hugo_code_fence: nil
+#+hugo_section: notes
+#+hugo_draft: false
+#+hugo_tags: cybersecurity certificates google
+#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
+#+export_file_name: google-cybersec-cert-crse-01-wk-03
+
+* Foundations of Cybersecurity: Week Three
+
+Will cover about security frameworks and controls, which are used to mitigate organizational risk; covering principles of the Confidentiality, Integrity, and Availability (CIA) triad and National Institute of Standards and Technology (NIST) frameworks.
+
+ + Define security frameworks and controls
+ + Define the CIA triad and NIST CSF
+ + Discuss how the CIA triad and NIST CSF are used to develop procedures and processes to address security threats, risks, and vulnerabilities
+ + Explain security ethics
+
+** Frameworks and Controls
+
+Security frameworks are guidelines used for building plans to help mitigate risks and threats to data and privacy, providing a structured approach to implementing a security lifecycle. The security lifecycle is a set of policies and standards that define how an organization manages risks, follows established guidelines, and meets regulatory compliance.
+
+Depending on the type of compliance risk, would entail the security framework to use; protecting PII, financial information, identifying security weaknesses, managing organizational risks, and aligning security with business goals.
+
+Frameworks are composed of four core components:
+
+#+begin_quote
+*Identifying and Documenting Security Goals*
+As a security analyst, may be asked to identify and document areas where an organization may be out of compliance with the E.U.'s General Data Protection Regulation (GDPR).
+#+end_quote
+
+#+begin_quote
+*Establishing Guidelines to Achieve Security Goals*
+While implementing guidelines to be compliant with GDPR, the organization may have to developer new policies for handling data requests from individual users.
+#+end_quote
+
+#+begin_quote
+*Implementing Strong Security Processes*
+A social media company may help design procedures for the organization to be compliant with GDPR with verified user data requests; updating or deleting profile information.
+#+end_quote
+
+#+begin_quote
+*Monitoring and Communicating Results*
+As a security analyst monitoring your organizations network for potential security issues that may affect compliance with GDPR and reporting it to a manager or regulatory compliance officer.
+#+end_quote
+
+Frameworks allow analysts to work alongside the security team to document, implement, and use the policies and procedures that have been created.
+
+Security controls are safeguards designed to reduce specific risks, such as a guideline for a company's employees to complete privacy training to reduce risk of data breaches, using a software to assign and track employee training participation.
+
+*** Secure Design
+
+*CIA Triad* is the foundational model that helps inform how organizations consider risk when setting up systems and security policies; stands for Confidentiality, Integrity, and Availability.
+
+#+begin_quote
+*Confidentiality*
+Only authorized uses can access specific assets or data. As in setting strict access controls that define who should and should not have access to data.
+#+end_quote
+
+#+begin_quote
+*Integrity*
+Data is correct, authentic, and reliable. As in using a form of data protection like encryption to not have data tampered with.
+#+end_quote
+
+#+begin_quote
+*Availability*
+Data is accessible to those who are authorized to access it.
+#+end_quote
+
+In the above definitions, the term _asset_ is mentioned, which is an item perceived as having value to an organization. With the value being determined by the cost associated with the asset.
+
+As an example, an application that stores sensitive data is a valuable asset to an organization which carries more risk and would required tighter security controls.
+
+When managing short and long-term risk, a baseline framework utilized is the NIST CSF (National Institue of Standard and Techonology: Cybersecurity Framework) which consists of standards, guidelines, and best practices to manage risk.
+
+As security professionals, the key goal is managing and mitigating risks and protecting an ogranization's assets from threat actors. Understanding the motives a threat actor may have along with identifying an organization's most valuable assets.
+
+Threat actors can originate from all over the world, but keep in mind that some of the most dangerous to consider are disgruntled employees, having access to sensitive information and where to find it.
+
+*** Controls, Frameworks, and Compliance
+
+A security lifecycle is a constantly evolving set of policies and standards; security frameworks, controls, and compliance regulations (laws) are used together to manage security and minimize risk.
+
+*Security Controls* are safeguards designed to reduce specific security risks which are used alongside frameworks for ensuring security goals, correct process implementation, and compliance.
+
+*Security Frameworks* are guidelines for building plans to help mitigate risks and data / privacy threats composed of:
+ + Identifying and documenting security goals
+ + Setting guidelines to achieve security goals
+ + Implementing strong security processes
+ + Monitoring and communicating results
+
+*Compliance* refers to adhering to internal standards and external regulation.
+
+**** Specific Controls, Frameworks, and Compliance
+
+*National Institute of Standards and Technology* (NIST) is a U.S. based agency that develops multiple voluntary compliance frameworks to manage risk, such as *NIST Cybersecurity Framework* (CSF) and *NIST Risk Management Framework* (RMF).
+
+*Federal Energy Regulatory Commission - North American Electric Reliability Corporation* (FERC-NERC) is a regulation that applies to organizations that work with electricity or are involved with the U.S. and North American power grid. Also legally required to adhere to the *Critical Infrastructure Protection* (CIP) Reliability Standards defined by FERC.
+
+*Federal Risk and Authorization Management Program* (FedRAMP) is a U.S. federal government program that standardizes security assessment, authorization, monitoring, and handling of cloud services and product offerings -- provides consistency across the government sector and third-party cloud providers.
+
+*Center for Internet Security* (CIS) is nonprofit with multiple areas of emphasis. Provides a set of controls that can be used for systems and networks against attacks while also providing actionable controls in the case of a security incident.
+
+*General Data Protection Regulation* (GDPR) is an European Union (E.U.) data regulation that protects the processing of E.U. residents' data and their right to privacy within and outside of E.U. territory.
+
+*Payment Card Industry Data Security Standard* (PCI DSS) is an international security standard for ensuring organizations store, accept, process, and transmit credit card information securely.
+
+*Health Insurance Portability and Accountability Act* (HIPAA) is a U.S. federal law established in 1996 to protect patients' health information which prohibits sharing patient information withouth their consent.
+ + Privacy
+ + Security
+ + Breach Notification
+If an organization stores patient data, it is their legal obligation to inform patients of a breach as exposed *Protected Health Information* (PHI) can lead to identity theft and insurance fraud. PHI relates to past, present, or future physical or mental health condition, type of care, or payments for the care. In conjunction, security professionals must be familiar with the *Health Information Trust Alliance* (HITRUST) security framework for institutions to meet HIPAA compliance.
+
+*International Organization for Standardization* (ISO) was created to establish international standards related to technology, manufacturing, and management across borders.
+
+*System and Organizations Controls* (SOC Type 1, SOC Type 2) was developed by the *American Institue of Certified Public Accountants* (AICPA) which entails a series of reports focusing on an organization's user access policies at the following levels:
+ + Associate
+ + Supervisor
+ + Manager
+ + Executive
+ + Vendor
+ + Others
+Used to assess and orgs financial compliance and levels or risk; covering confidentiality, privacy, integrity, availability, security, and overall data safety.
+
+* Ethics in Cybersecurity
+
+New technologies present new challenges in security and the right or wrong answer isn't always clear with every new incident or risk.
+
+As an example, working as a security analyst a high risk alert is received for data that has been transferred without authorization. Upon investigating, it is identified the transfer was made from a friend at work. What to do?
+
+As a security professional, ethically, you must remain unbiased and maintain security and confidentiality. You may want to protect said friend but no matter what user it may be, there is a responsibility and obligation to adhere to the policies and protocols trained to follow. Remember, security teams are entrusted with greater access to data and information and that privilege must be respected and act ethically at all times. Don't go giving yourself a raise just because you have access to the payroll data!
+
+*Security ethics* are guidelines for making appropriate decisions as a security professional.
+
+*Ethical Principles in Security*
+ + Confidentiality: as stated above in the CIA triad
+ + Pricacy Protections: safeguarding personal information from unauthorized use
+ + Laws: rules that are recognized by a community and enforced by a governing entity
+
+** Ethical Concepts that Guide Cybersecurity Decisions
+
+A strong sense of ethics can help navigate decisions to mitigate threats by remaining unbiased and maintaining the security of confidentiality of private data.
+
+*** Ethical Concerns and Laws Related to Counterattacks
+
+**** United States Standpoint
+
+Counterattacks within the U.S. on a threat actor are illegal due to laws like the *Computer Fraud and Abuse Act* of 1986 and the *Cybersecurity Information Sharing Act* of 2015 along with others. Defending is your only option as the act of counterattacking is considered an act of vigilantism as it can lead to further escalation of the attack or in the case of a state-sponsored hacktivist, can lead to serious international implications.
+
+Only approved individuals employed by the federal government or military are allowed to counterattack.
+
+**** International Standpoint
+
+According to the *International Court of Justice* (ICJ) states that a person or group can counterattack if:
+ + It will only affect the party that attacked first
+ + Is a direct communication asking the initial attacker to stop
+ + Does not escalate the situation
+ + The effects can be reversed
+
+Organizations typically do not counterattack as the parameters above are hard to measure and can lead to legal implications or other manner of negative outcomes.
+
+*** Ethical Principles and Methodologies
+
+Since counterattacks are generally disapproved of or illegal, frameworks and controls were created like the CIA triad.
+
+*Confidentiality* means only authorized users can access specific assets or data.
+
+*Privacy Protection* means safeguarding personal information from unauthorized use.
+
+*Laws* are rules that are recognized by a community and enforced by a governing entity and must:
+ + Remain unbiased and conduct work honestly, responsibly, and with the highest respect of the law
+ + Be transparent and just, and rely on evidence
+ + Ensure being consistenly invested in the work being done, to appropriately and ethically address issues that arise
+ + Stay informed and strive to advance skils, to contribute to the betterment of the cyber landscape

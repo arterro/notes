@@ -1,0 +1,19 @@
+#+title: Google Cybersecurity Professional Certificate - Course 01 | Week 04
+#+hugo_custom_front_matter: :summary Week Four of Google's Cybersecurity Certification, Foundations of Cybersecurity
+#+hugo_code_fence: nil
+#+hugo_section: notes
+#+hugo_draft: false
+#+hugo_tags: cybersecurity certificates google
+#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
+#+export_file_name: google-cybersec-cert-crse-01-wk-04
+
+* Foundations of Cybersecurity: Week Four
+
+Will cover about common tools used by cybersecurity analysts to identify and mitigate risk such as security information and event management (SIEM) tools, network protocol analyzers, and programming languages.
+
+ + Identify common tools used by entry-level security analysts
+ + Indetify the purposes of commonly used tools
+ + Identify commonly used programming languages and how entry-level security analysts interact with those languages
+ + Discuss how entry-level security analysts use tools and programming language to mitigate risk
+
+** Important Cybersecurity Tools
