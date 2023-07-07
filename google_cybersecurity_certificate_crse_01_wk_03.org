@@ -1,5 +1,6 @@
 #+title: Google Cybersecurity Professional Certificate - Course 01 | Week 03
 #+hugo_custom_front_matter: :summary Week Three of Google's Cybersecurity Certification, Foundations of Cybersecurity
+#+hugo_publishdate: 2023-06-05
 #+hugo_auto_set_lastmod: t
 #+hugo_code_fence: nil
 #+hugo_section: notes

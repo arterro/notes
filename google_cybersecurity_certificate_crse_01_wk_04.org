@@ -1,5 +1,7 @@
 #+title: Google Cybersecurity Professional Certificate - Course 01 | Week 04
 #+hugo_custom_front_matter: :summary Week Four of Google's Cybersecurity Certification, Foundations of Cybersecurity
+#+hugo_publishdate: 2023-06-28
+#+hugo_auto_set_lastmod: t
 #+hugo_code_fence: nil
 #+hugo_section: notes
 #+hugo_draft: false
@@ -17,3 +19,79 @@ Will cover about common tools used by cybersecurity analysts to identify and mit
  + Discuss how entry-level security analysts use tools and programming language to mitigate risk
 
 ** Important Cybersecurity Tools
+
+#+begin_quote
+*Log*
+A record of events that occur within an organization's systems
+#+end_quote
+
+Security related logs include records of employees signing into their computers or accessing web-based services; logs help identify vulnerabilities and potential security breaches.
+
+#+begin_quote
+*Security Information and Event Management* (SIEM)
+An application that collects and analyzes log data to monitor critical activities in an organization.
+#+end_quote
+
+SIEM tools collect real-time logs and allow to identify potential breaches as the happen, while also helping in reducing the amount of data an analyst must review by providing alerts for specific types of risks and threats.
+
+An example of SIEM's would be Splunk and Google Chronicle.
+
+#+begin_quote
+*Playbook*
+A manual that provides details about any operational action, such as how to respond to an incident.
+#+end_quote
+
+Playbooks are unique to an organization and provides a guide on how to handle an incident before, during, and after it has occurred which can pertain to security / compliance reviews, access management, and other organizational tasks.
+
+Depending on the task being performed different playbooks may come into action, like working a forensic case, the following may be utilized:
+
+*Chain of Custody*
+Process of documenting evidence possession and control during an incident lifecycle; documenting the who, what, where, and why the evidence was collected. Evidence gathered is your responsbility while in your possession and must be kept safe and tracked.
+
+*Protecting and Preserving Evidence*
+Process of properly working with fragile and volatile digital evidence by understanding what evidence falls under this category, referring to the *order of volatility*, which outlines the order of data that must be preserved from first to last.
+
+#+begin_quote
+*Network Protocol Analyzer* (Packer Sniffer)
+A tool designed to capture and analyze data traffic within a network.
+#+end_quote
+
+Common packet sniffers include *tcpdump* and *Wireshark*.
+
+** Core Cybersecurity Knowledge and Skills
+
+*** Introduction to Linux, SQL, and Python
+
+Programming languages can be utilized to create a specific set of instructions for a computer to execute tasks. Allowing to complete repetitive tasks and processes with a high degree of accuract and efficiency, while at the same time reducing the risk of human error and saving time.
+
+#+begin_quote
+*Linux*
+An open-source operating system
+#+end_quote
+
+An operating system (OS) that relies on a command line (CLI) as the primary user interface and while not a programming language, it allows for the use of text-based commands between the user and the OS.
+
+#+begin_quote
+*Structured Query Language* (SQL)
+A programming language used to create, interact with, and request information from a database.
+#+end_quote
+
+#+begin_quote
+*Database*
+An organized collection of information or data
+#+end_quote
+
+#+begin_quote
+*Data Point*
+Specific piece of information
+#+end_quote
+
+#+begin_quote
+*Python*
+Used to perform tasks that are repetitive and time-consuming, and that require a high-level of detail and accuracy.
+#+end_quote
+
+#+begin_quote
+*Automation*
+Use of technology to reduce human error and manual effort in performing common and repetitive tasks.
+#+end_quote
