@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       f26c113e-d2e2-4c14-bfb4-09b49fd23020
+:END:
 #+title: Google Cybersecurity Professional Certificate - Course 01 | Week 04
 #+hugo_custom_front_matter: :summary Week Four of Google's Cybersecurity Certification, Foundations of Cybersecurity
 #+hugo_publishdate: 2023-06-28

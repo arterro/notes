@@ -1,0 +1,226 @@
+:PROPERTIES:
+:ID:       cbda54f0-2385-4c9b-aab0-bb9bfd9a1b1a
+:END:
+#+title: Google Cybersecurity Professional Certificate - Course 02 | Week 01
+#+hugo_custom_front_matter: :summary Week One of Google's Cybersecurity Certification, Play It Safe: Manage Security Risks
+#+hugo_date: [2023-07-10 Mon]
+#+hugo_auto_set_lastmod: Time-stamp: <2023-07-11 23:19:08 (adelgado)>
+#+hugo_code_fence: nil
+#+hugo_section: notes
+#+hugo_draft: false
+#+hugo_tags: cybersecurity certificates google
+#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
+#+export_file_name: google_cybersecurity_professional_certificate_course_02_week_01
+
+* Play it Safe - Manage Security Risks: Week One
+
+Will go into gaining further understanding of the CISSP's (Certified Information Systems Security Professionals) eight security domains, and learning about primary threats, risks, and vulnerabilities to business operations.
+
+ + Recognize and explain CISSP's eighty security domains
+ + Identify and define primary threats and vulnerabilities to business ops
+ + Describe threats, risks, and vulnerabilities that entry-level security analyst focus on
+ + Identify risk management steps
+
+** CISSP Security Domains
+
+Security teams untilize the security domains to organize daily tasks and identify gaps in security that could cause negative consequences for an organization, and to establish their security posture; ability to manage its defense of critical assets and data and and react to change.
+
+*Security and Risk Management*
+
+First Domain.
+
+Establishing a risk mitigation procedures to reduce risks to critical assets for organizations to quickly reduce impact in the case of a breach. The primary method used to develop internal security policies, regulatory requirements, and independent standards is through compliance, as the continuity of the business relates to maintaining productivity.
+
+ + Security Goals and Objectives
+ + Risk Mitigation Processes
+ + Compliance
+ + Business Continuity Plans
+ + Legal Regulations
+ + Professional and Organizational Ethics
+
+Information Security (InfoSec), set of processes to secure information.
+
+ + Incident Response
+ + Vulnerability Management
+ + Application Security
+ + Cloud Security
+ + Infrastruture Security
+
+---
+
+*Asset Security*
+
+Second Domain.
+
+Entails on the securement, storage, maintenance, retention, and destruction of physical and digital assets via an organization establishing proper policies and procedures. Know who has access to what data and having a strong security posture for risk mitigation.
+
+---
+
+*Security Architecture and Engineering*
+
+Third Domain.
+
+Entails all individuals within an organization have shared responsibility of actively lowering risk by following policies set in place for tools, systems, and processes.
+
+ + Threat Modeling
+ + Least Privilege
+ + Defense in Depth
+ + Fail Securely
+ + Separation of Duties
+ + Keep It Simple
+ + Zero Trust
+ + Trust buy Verify
+
+---
+
+*Communication and Network Security*
+
+Fourth Domain.
+
+Focused around management and securing of physical networks and wireless communications to keep data and communications safe on-site, in the cloud, or via remote access. Such as, disabling access to insecure bluetooth connections or public hotspots.
+
+---
+
+*Identity and Access Management* (IAM)
+
+Fifth Domain.
+
+Entails establishing policies to control and manage assets, as to whom has access and authorization for data within the organiztion. Least priviege principle, only give access necessary to accomplish the idividuals duties. Don't give everyone in the organiation the same admin login, as this would increase risk and if breached, make it difficult to discern valid user activity from the threat actor.
+
+ + Identification: user verification via username, access card, or biometric data
+ + Authentication: identity verification via a password or PIN
+ + Authorization: identify level of access after a user's identity is confirmed
+ + Accountability: monitor and record user actions
+
+---
+
+*Security Assessment and Testing*
+
+Sixth Domain.
+
+Focuses on conducting security control testing, collecting and analyzing data, and conducting security audits to monitor for risks, threats, and vulnerabilities. Examining the organizations goals and objections and evaluating if contols set in place achieve those goals by performing testing to identify new and efficient ways to mitigate threats, risks, and vulnerabilities. Implementing multi-factor authentication (MFA) can better protect and organization.
+
+---
+
+*Security Operations*
+
+Seventh Domain.
+
+Focuses on conducting investigations to implement preventative measures when a security incident has been identified. A process that required urgency to minimize risks and if there's an ongoing attack, to mitigate and prevent it from escalating to protect private information.
+
+Once the threat is neutralized, evidence is collected be it physical or digital to conduct a forensic investigation. This investigation will identify the when, how, and why of the breach and help determine improvement of preventative measures.
+
+ + Training and Awareness
+ + Reporting and Documentation
+ + Intrusion Detection and Prevention
+ + SIEM Tools
+ + Log Management
+ + Incident Management
+ + Playbooks
+ + Post-breach Forensics
+ + Reflecting on Lessons Learned
+
+---
+
+*Software Development Security*
+
+Eighth Domain.
+
+Establishing guidelines for secure coding practices for creating secure applications and services. Ensure each phase of the software development cycle undergoes security audits to integrate security into the product. Such as secure design during the design phase, secure code reviews during development and testing, and penetrating testing during deployment and implementation.
+
+*** Navigate Threats, Risks, and Vulnerabilities
+
+#+begin_quote
+*Threat*
+Any circumstance or event that can negatively impact assets.
+#+end_quote
+
+A social engineering attack is a type of threat, which is a manipulation technique that exploits human error for gaining access to private information.
+
+#+begin_quote
+*Risks*
+Anything that can impact the confidentiality, integrity, or availability of an asset.
+#+end_quote
+
+As an example, lacking backup protocols for recovering stored information in the event of an accident or security incident. Risks can be rated as: low, medium and high.
+
+*Low Risk* would entail information that would cause no harm to the organization's reputation, operations, and finances; website content / published research data.
+
+*Medium Risk* would entail information that's not publicly available and could cause some damage to an organization's reputation, operations, and finances; early release of company's quaterly earnings could impact stock.
+
+*High Risk* would entail any information protected by regularions or laws and would cause severe damage to an organization's reputation, operations, and finances; leaked assets with SPII, PII, or intellectual property.
+
+#+begin_quote
+*Vulnerabilities*
+A weakness that can be exploited by a threat (both vulnerability and threat must be present to be a risk)
+#+end_quote
+
+As an example, outdated firewalls, software, applications, weak passwords, or unprotected and confidential data. As a reminder, people are also a vulnerability, as their actions can affect and organization's network.
+
+**** Ransomware
+
+This is a malicious attack where threat actors encrypt an organization's data then demand payment to restore access. Rendering devices unusable, freezing network systems, and encrypt / lock confidential data. A threat actor then demands a ransom for the decryption key for an organization to resume normal business operations and negotations and leaked data mostly occurs within the dark web.
+
+*Surface Web* is what we use day to day and can be accessed via a normal web browser.
+
+*Deep Web* will usually require authorization to access it, such as an organization's intranet.
+
+*Dark Web* can only be accessed by using special software and generally carries a negative connotation due to criminal activity done within this layer by the secrecy it provides.
+
+***** Three Key Impacts of Threats, Risks, and Vulnerabilities
+
+*Financial*
+
+Financial consequences can be significant, which can include interrupted production and services, cost to correct the issue, and fines if assets are compromised due to non-compliance with laws and regulations.
+
+*Identity Theft*
+
+Storing any type of sensitive data is a risk for an organization and must decide whether to store customer, employee, and outside vendor data and its retention period.
+
+*Reputation*
+
+Exploited vulnerabilities can lead customers to seek business with competitors or creates bad press causing permanent damage. Loss of customer data can lead to legal penalties and fines.
+
+**** National Institute of Standards and Technology Risk Management Framework (NIST RMF)
+
+Consists of seven steps for understanding to mitgate and manage risks.
+
+*Prepare*
+
+Refers to activities that are necessary to manage security and privacy risks before a breach occures, which could entail monitoring for risks and identifying controls that can be utilized to reduce such risks.
+
+---
+
+*Categorize*
+
+Developing risk management processes and tasks to think how confidentiality, integrity, and availability of systems and information can be impacted by risk. Understand how to follow the established processes to reduce risk to critical assets.
+
+---
+
+*Select*
+
+Choose, customize, and capture documentation of the controls that protect an organization. Keeping a playbook up-to-date or helping manage other documentation that helps in addressing issues more efficiently.
+
+---
+
+*Implement*
+
+Apply security and privacy plans for the organization to minimize the impact of security risks. If employees are constantly needing password resets, implement a change to password requirements to help solve the issue.
+
+---
+
+*Assess*
+
+Determins if established controls are implemented corectly. Analyze if implemented protocols, procedures, and controls in place are meeting organizational needs.
+
+---
+
+*Authorize*
+
+Being accountable for the security and privacy risks that may exist in an organization.
+
+---
+
+*Monitor*
+
+Be aware of how systems are operating by asessing and maintaining technical operations.
