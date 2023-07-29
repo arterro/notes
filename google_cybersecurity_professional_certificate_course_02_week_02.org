@@ -1,0 +1,95 @@
+:PROPERTIES:
+:ID:       b63a5df6-34b8-4dce-8272-19ed639e7d50
+:END:
+#+title: Google Cybersecurity Professional Certificate - Course 02 | Week 02
+#+hugo_custom_front_matter: :summary Week Two of Google's Cybersecurity Certification, Play It Safe: Manage Security Risks
+#+hugo_date: [2023-07-11 Tue]
+#+hugo_auto_set_lastmod: Time-stamp: <2023-07-12 22:37:49 (adelgado)>
+#+hugo_code_fence: nil
+#+hugo_section: notes
+#+hugo_draft: false
+#+hugo_tags: cybersecurity certificates google
+#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
+#+export_file_name: google_cybersecurity_professional_certificate_course_02_week_02
+
+* Play it Safe - Manage Security Risks: Week Two
+
+Focus on security frameworks and controls, along with the core components of the CIA triad and the Open Web Applicatiion Project (OWASP) security principles and security audits.
+
+ + Explore common elements of internal security audits.
+ + Define security audits.
+ + Define security frameworks and controls.
+ + Describe the CIA triad.
+ + Explain the National Institute of Standards and Technology (NIST) frameworks.
+ + Identify security principles.
+ + Examine how businesses use security frameworks and controls to protect business operations.
+
+** More About Frameworks and Controls
+
+Organizations use security frameworks as a starting point to crete their own security policies and processes.
+
+#+begin_quote
+*Security Frameworks*
+Guidelines used for building plans to help mitigate risks and threats to data and privacy, such as social engineering attacks and ransomware.
+#+end_quote
+
+Security encompasses the virtual and physical space, which plans exists to maintain safety in the work environments; like requiring badges for access into a building.
+
+Other frameworks may be used for guidance on how to prevent, detect, and respond to security breaches. Like protecting and organization from social engineering attacks such as phishing, since people are the biggest threat to security. This is where frameworks can be used to create plans that increase employee awareness and education on protecting the organization.
+
+#+begin_quote
+*Security Controls*
+Safeguards designed to reduce specific security risks by providing encryption, authentication, and authorization.
+#+end_quote
+
+*Encryption* converts readable data to an encoded format, by converting plaintext into ciphertext; raw, encoded message unreadable to humans and computers. Ciphertext data cannot be read unless decrypted, which ensures confidentiality of sensistive data.
+
+*Authentication* is the process of verifying who someone or something is, like logging into a website using a username and password as a basic level. Implementation of multi-factor authentication (MFA) requires not only a username and password but an additional form of authentication like a fingerprint, voice, or face scan (biometrics). Biometrics are unique phyisical characterisitics for verifying a person's identity which can be a fingerprint, eye scan, palm scan, and more.
+
+Vishing is the exploitation of electronic voice communication by impersonating a person's voice.
+
+*Authorization* is the concept of granting access to specific resources within a system, which verifies if an individual has permissions to access a resource.
+
+*Cyber Threat Framework* (CTF)
+
+Developed by the U.S. government to provide a common language for describing and communicating information about cyber threat activity. Helping cybersecurity professionals analyze and share information more efficiently.
+
+*International Organization for Standardization/International Electrotechnical Commission (ISO/IEC) 27001*
+
+Internationally recognized standards that enables organizations from all sectors and sizes to manage security assets like financial information, intellectual property, employee data, and third party entrusted information. Outlines requirements for an information security management system, best practices, and controls that support the management of risks.
+
+*Controls*
+
+Used alongside frameworks to redice the possibility and impact of a security threat, risk, or vulnerability.
+
+/Physical/
+ + Gates, fences, and locks
+ + Security Guards
+ + Closed-circuit Television (CCTV), surveillance cameras, and motion detectors
+ + Access cards or badges to enter office spaces
+
+/Technical/
+ + Firewalls
+ + MFA
+ + Antivirus Software
+
+/Administrative/
+ + Separation of Duties
+ + Authorization
+ + Asset Classification
+
+** CIA Triad: Confidentiality, Integrity, and Availability
+
+A model that helps inform how to consider risk when setting up systems and security policies.
+
+*Confidentiality*
+Means that only authorized users can access specific assets or data. "Need to know" basis is the name of the game when it comes to sensitive data, principle of least privilege.
+
+*Integrity*
+Means that the data is correct, authentic, and reliable. Having protocols to verify the authenticity of data is essential, such as verifying data integrity via cryptography. Encryption can be a method to implement integrity.
+
+*Availability* means that the data is accessible to those who are authorized to access it, such as remote employees having access to the internal network to perform their tasks.
+
+** NIST Frameworks
+
+** OWASP
