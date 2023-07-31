@@ -4,7 +4,7 @@
 #+title: Google Cybersecurity Professional Certificate - Course 02 | Week 02
 #+hugo_custom_front_matter: :summary Week Two of Google's Cybersecurity Certification, Play It Safe: Manage Security Risks
 #+hugo_date: [2023-07-11 Tue]
-#+hugo_auto_set_lastmod: Time-stamp: <2023-07-12 22:37:49 (adelgado)>
+#+hugo_auto_set_lastmod: Time-stamp: <2023-07-31 00:08:20 (adelgado)>
 #+hugo_code_fence: nil
 #+hugo_section: notes
 #+hugo_draft: false
@@ -26,7 +26,7 @@ Focus on security frameworks and controls, along with the core components of the
 
 ** More About Frameworks and Controls
 
-Organizations use security frameworks as a starting point to crete their own security policies and processes.
+Organizations use security frameworks as a starting point to create their own security policies and processes.
 
 #+begin_quote
 *Security Frameworks*
@@ -92,4 +92,80 @@ Means that the data is correct, authentic, and reliable. Having protocols to ver
 
 ** NIST Frameworks
 
-** OWASP
+Organizations use frameworks as a starting point to develop plans that mitigate risks, threats, and vulnerabilities to sensitive data and assets.
+
+NIST Cybersecurity Framework (CSF) consists of standards, guidelines, and best practices to manage cybersecurity risk, consisting of five core functions: identity, protect, detect, respond, and recover.
+
+The framework can be utilized to develop plans to handle an incident appropriately and quickly to lower risk, protect an organization against threat, and mitigate any potential vulnerabilities.
+
+*** NIST CSF Five Core Functions
+
+*Identity* relates to the management of cybersecurity risk and its effect on an organization's people and assets.
+ + May be asked to monitor systems and devices in your organization's internal network to identify potential security issues.
+
+*Protect* is the strategy used to protect an organization through the implementation of policies, procedures, traning, and tools that help mitigate threats.
+ + Might encounter an unfamiliar threat, studying historical data and making improvements to policies / procdures is essential.
+
+*Detect* is identifying potential security incidents and improving monitoring capabilities to increase the speed and efficiency of detections.
+ + Reviewing new security tool's setup to make sure it's flagging low, medium, or high risk, and alerting the security team.
+
+*Respond* is making sure that the proper procedures are used to contain, neutralize, and analyze security incidents, and implement improvements to the security process.
+ + Working with a team to collect and organize data to document an incident and suggest improvements to processes.
+
+*Recover* is the process of returning affected systems back to normal operation.
+ + Work with a team to restore systems, data, and assets, such as financial or legal files affected by an incident or breach.
+
+** Open Worldwide Application Security Project (OWASP)
+
+*** Security Principles
+
+Principle of minimizing the attack surface area; referring to all potential vulnerabilities that a threat actor could explot, attack vectors, which are pathways attackers use to penetrate security defenses. Common attack vectors are phishing emails and weak passwords.
+
+Principle of least privilege; making sure that users have the least amount of access required to perform their everyday tasks. This is to reduce the amount of damage a security breach could cause. Say you have access to log data but to change user permissions, if your credentials become compromised the threat actor would gain limited access.
+
+Principle of defense in depth; having multiple security controls that address risks and threats in different ways. One security control is multi-factor authentication (MFA), requiring users to take an additional step than their username and password to access an application. Other controls include firewalls, intrusion detection systems, and permission settings.
+
+Principle of separation of duties, used to prevent individuals from carrying out fraudulent or illegal activities. No one should have so many privileges that the can misuse the system, like the person who signs the paychecks at a company should not be the one who also prepares them.
+
+Principle of keep security simple; when implementing security controls, unnecessarily complicatd solutions should be avoided because they can become unmanageable, the more complex, the harderfor people to work together.
+
+Principle of fixing security issues correctly; when a security incident occurs, it is expected to identify the root cause quickly, but it is important to correct any identified vulnerabilities and conduct tests to ensure that repars are successful.
+
+*Recap*
+
+ + *Minimize attack surface area*: Attack surface refers to all the potential vulnerabilities a threat actor could exploit.
+ + *Principle of least privilege*: Users have the least amount of access required to perform their everyday tasks.
+ + *Defense in depth*: Organizations should have varying security controls that mitigate risks and threats.
+ + *Separation of duties*: Critical actions should rely on multiple people, each of whom follow the principle of least privilege.
+ + *Keep security simple*: Avoid unnecessarily complicated solutions. Complexity makes security difficult.
+ + *Fix security issues correctly*: When security incidents occur, identify the root cause, contain the impact, identify vulnerabilities, and conduct tests to ensure that remediation is successful.
+
+*Additional Principles*
+
+Fail securely, when controls fail or stop, it should do so by defaulting to its most secure option. If a firewall fails, it should close all connections and block new ones, instead of accepting everything.
+
+Don't trust services, third-party partners often have different security policies than an organization does. Partners' systems should be explicitly trusted as secure. If a vendor tracks reward points for airline customers, the airline should ensure that the balance is accurate before sharing the information with their customers.
+
+Avoid security by obscurity, security of key systems should not rely on keeping details hidden. The security of an application should not rely on keeping the source code secret. Its security should rely upon many other factors, including reasonable password policies, defense in depth, business transaction limits, solid network architecture, and fraud and audit controls.
+
+*** Security Audits
+
+A review of an organization's security controls, policies, and procedures against a set of expectations, either internally or externally.
+
+Internal security audits are typically conducted by a team of people that might include an organization's compliance officer, security manager, and other security members. Internal audits help improve an organiation's security posture and help avoid fines from governing agencies from a lack of compliance, identifying risk, asses controls, and correct compliance issues.
+
+Common elements to internal security audits include establishing the scope and goals of the audit, conducting a risk assessment of the organization's assets, completing a controls assessment, assessing compliance, and communicating results to stakeholders.
+
+Scope requires organizations to indentify people, assets, policies, procedures, and technologies that might impact an organization's security posture. As an example, scope of an audit involves assessing user permissions; identifying existing controls, policies, and procedures; and accounting for the technology currently is use by the organization.
+
+Conducting a risk assessment; focused on identifying potential threats, risks, and vulnerabilities. Helps to consider what security measures should be implemented and monitored to ensure the safety of assets. As an example, a risk assessment highlights that there are inadequate controls, processes, and procedures in place to protect the organization's assets. Moreso, lack of proper management of physical and digital assets, including employee equipment.
+
+Completing a controls assessment; closely reviewing an organization's existing assets, then evaluating potential risks to those assets, ensuring internal controls and processes are effective.
+
+ + Adminitrative controls are related to the human component of cybersecurity, policies and procedures defining how data is managed.
+ + Technical controls are hardware and software solutions used to protect assets, such as intrusion detection systems and encryption.
+ + Physical controls are measures put in place to prevent physical access to protected assets, such as cameras and locks.
+
+Assessing compliance; compliance regulations are laws that organization's must follow to ensure private data remains secure.
+
+Communication; once the internal security audit is complete, results and recommendations need to be communicated to stakeholders. Summarizes the score and goals of the audit, listing existing risks and their priority to be addressed, and identifies compliance regulations that need to be ahered while providing recommendations to improve security posture.
