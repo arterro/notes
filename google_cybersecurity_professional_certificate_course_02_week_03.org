@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       480d0eef-cef1-4d85-b7a0-4727718b36f3
+:END:
+#+title: Google Cybersecurity Professional Certificate - Course 02 | Week 03
+#+hugo_custom_front_matter: :summary Week Three of Google's Cybersecurity Certification, Play It Safe: Manage Security Risks
+#+hugo_date: [2023-07-31 Mon]
+#+hugo_auto_set_lastmod: Time-stamp: <2023-07-31 00:13:29 (adelgado)>
+#+hugo_code_fence: nil
+#+hugo_section: notes
+#+hugo_draft: false
+#+hugo_tags: cybersecurity certificates google
+#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
+#+export_file_name: google_cybersecurity_professional_certificate_course_02_week_03
+
+* Play It Safe - Manage Security Risks: Week Three
