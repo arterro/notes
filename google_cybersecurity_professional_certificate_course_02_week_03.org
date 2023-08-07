@@ -4,7 +4,7 @@
 #+title: Google Cybersecurity Professional Certificate - Course 02 | Week 03
 #+hugo_custom_front_matter: :summary Week Three of Google's Cybersecurity Certification, Play It Safe: Manage Security Risks
 #+hugo_date: [2023-07-31 Mon]
-#+hugo_auto_set_lastmod: Time-stamp: <2023-07-31 00:13:29 (adelgado)>
+#+hugo_auto_set_lastmod: Time-stamp: <2023-08-01 23:13:10 (adelgado)>
 #+hugo_code_fence: nil
 #+hugo_section: notes
 #+hugo_draft: false
@@ -13,3 +13,10 @@
 #+export_file_name: google_cybersecurity_professional_certificate_course_02_week_03
 
 * Play It Safe - Manage Security Risks: Week Three
+
+Explore industry leading security information and event management (SIEM) tools used by security professionals to protect business operations.
+
+ + Identify and define commonly used SIEM tools
+ + Describe how SIEM tools are used to protect business operations
+
+** Security Information and Event Management (SIEM) Dashboards
