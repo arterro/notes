@@ -1,0 +1,54 @@
+:PROPERTIES:
+:ID:       94204d88-5bd1-48cf-94b9-e63f14390db7
+:END:
+#+title: Google Cybersecurity Professional Certificate - Course 02 | Week 04
+#+hugo_custom_front_matter: :summary 
+#+hugo_date: [2023-08-07 Mon]
+#+hugo_auto_set_lastmod: Time-stamp: <2023-08-07 19:51:14 (adelgado)>
+#+hugo_code_fence: nil
+#+hugo_section: notes
+#+hugo_draft: false
+#+hugo_tags: 
+#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
+#+export_file_name: google_cybersecurity_professional_certificate_course_02_week_04
+
+* Play It Safe - Manage Security Risks: Week Four
+Learn about the purposes and common uses of playbooks. You'll also explore how cybersecurity professionals use playbooks to respond to identified threats, risks, and vulnerabilities.
+
+ + Define and describe the purpose of a playbook.
+ + Use a playbook to respond to identified threats, risks, or vulnerabilities.
+
+** Phases of Incident Response Playbooks
+A playbook is a manual that provides details about any operational action and help clarify what tools should be used in response to a security incident.
+
+Playbooks ensure people follow a consistent list of actions in a prescribed way, no matter who is on the case -- urgency, efficiency, and accuracy.
+
+There are many playbook types be it for incident response, security alerts, teams-specific, and product-specific. For this course, a common cybersecurity playbook will be discussed, incident response playbook. It consists of six phases used to help mitigate and manage secuirty incidents from beginning to end.
+
+*Preparation*
+
+Prepare to mitigate the likelihood, risk, and impact of a security incident by documenting procedures, establushing staffing plans, and educating users.
+
+As an example, an organization can create incident response plans and procedures that outline the roles and responsibilities of each security team member.
+
+*Detection and Analysis*
+
+Detect and analyze events using defined processes and technology by using appropriate tools and strategies during this phase helps security analysts determine whether a breach has occurred and analyze its possible magnitude.
+
+*Containment*
+
+Prevent further damage and reduce the immediate impact of a security incident. Containment is a high priority for organization because it helps prevent ongoing risks to critical assets and data.
+
+*Eradication and Recovery*
+
+Describes ways to eliminate all traces of the incident and restore the affected systems back to normal operations. For example, the playbook might instruct the analyst to restore the impacted operating system, then restore the affected data using a clean backup, created before the malware outbreak.
+
+*Post-Incident*
+
+Includes documenting the incident, informing organizational leadership, and applying lessons learned to ensure that an organization is better prepared to handle future incidents.
+
+*Coordination*
+
+Involves reporting incidents and sharing information, throughout the incident response process, based on the organization's established standards, this is important as it ensures compliance it met.
+
+** Explore Incident Response
