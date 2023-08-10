@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       6b7f4411-1ba2-4407-91bd-3a085c0a83d2
+:END:
+#+title: Google Cybersecurity Professional Certificate - Course 03 | Week 01
+#+hugo_custom_front_matter: :summary Week One of Google's Cybersecurity Certification, Connect and Protect: Networks and Network Security
+#+hugo_date: [2023-08-09 Wed]
+#+hugo_auto_set_lastmod: Time-stamp: <2023-08-09 22:44:07 (adelgado)>
+#+hugo_code_fence: nil
+#+hugo_section: notes
+#+hugo_draft: false
+#+hugo_tags: cybersecurity certificates google
+#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
+#+export_file_name: google_cybersecurity_professional_certificate_course_03_week_01
+
+* Connect and Protect - Networks and Network Security: Week One
+
+Introduced to network security and explain how it relates to ongoing security threats and vulnerabilities. Learn about network architecture and mechanisms to secure a network.
+
+ + Define types of networks
+ + Describe physical components of a network
+ + Understand how the TCP/IP model provides a framework for network communication
+ + Explain how data is sent/received over a network
+ + Explain network architecture
+
+** Introduction to Networks

@@ -2,13 +2,13 @@
 :ID:       94204d88-5bd1-48cf-94b9-e63f14390db7
 :END:
 #+title: Google Cybersecurity Professional Certificate - Course 02 | Week 04
-#+hugo_custom_front_matter: :summary 
+#+hugo_custom_front_matter: :summary Week Four of Google's Cybersecurity Certification, Play It Safe: Manage Security Risks
 #+hugo_date: [2023-08-07 Mon]
 #+hugo_auto_set_lastmod: Time-stamp: <2023-08-07 19:51:14 (adelgado)>
 #+hugo_code_fence: nil
 #+hugo_section: notes
 #+hugo_draft: false
-#+hugo_tags: 
+#+hugo_tags: cybersecurity certificates google
 #+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export
 #+export_file_name: google_cybersecurity_professional_certificate_course_02_week_04
 
