@@ -4,7 +4,7 @@
 #+title: Google Cybersecurity Professional Certificate - Course 03 | Week 01
 #+hugo_custom_front_matter: :summary Week One of Google's Cybersecurity Certification, Connect and Protect: Networks and Network Security
 #+hugo_date: [2023-08-09 Wed]
-#+hugo_auto_set_lastmod: Time-stamp: <2023-08-09 22:44:07 (adelgado)>
+#+hugo_auto_set_lastmod: Time-stamp: <2023-08-14 00:00:46 (adelgado)>
 #+hugo_code_fence: nil
 #+hugo_section: notes
 #+hugo_draft: false
@@ -14,7 +14,7 @@
 
 * Connect and Protect - Networks and Network Security: Week One
 
-Introduced to network security and explain how it relates to ongoing security threats and vulnerabilities. Learn about network architecture and mechanisms to secure a network.
+Introduce network security and explain how it relates to ongoing security threats and vulnerabilities. Learn about network architecture and mechanisms to secure a network.
 
  + Define types of networks
  + Describe physical components of a network
@@ -23,3 +23,135 @@ Introduced to network security and explain how it relates to ongoing security th
  + Explain network architecture
 
 ** Introduction to Networks
+
+A network is a group of connected devices -- at home, it can be your laptop, cell phones, and smart devices. Devices on a network can communicate with each other over network cables or wireless connections as well as networks in other locations and the devices on them.
+
+IP and MAC addresses are unique identifiers for each device on the network to locate each other, these devices can communicate over a local area network (LAN) and a wide area network (WAN).
+
+*Local Area Network (LAN)*
+
+Spans a small area like an office building, a school, or a home. Devices connected a WiFi in your house form a LAN which then connects to the internet.
+
+*Wide Area Network (WAN)*
+
+Spans a large geographical area like a city, state, or country -- the internet is one big WAN. As such an employee in San Francisco can communicate and share resources with another employee in London over WAN.
+
+*** Network Tools
+
+#+begin_quote
+*Hub*
+Network device that broadcasts information to every device on the network.
+#+end_quote
+
+Information sent to a hub is repeated out to all ports on it, thus, from a security perspective makes it vulnerable to eavesdropping.
+
+#+begin_quote
+*Switch*
+Makes connections between specific devices on a network by sending and receiving data between them.
+#+end_quote
+
+Between the switch and the hub, the switch is more secure, as it only passes data to the intended destination as it also controls the flow of traffic and improves network performance.
+
+#+begin_quote
+*Router*
+Network device that connects multiple networks together.
+#+end_quote
+
+If a computer in one network wants to send information to a tablet on another network, then the information will be transferred as follow:
+
+ + Information travels from computer to router
+ + Router reads the destination address and forwards the data to the intended network's router
+ + Receiving router directs infromation to the tablet
+
+#+begin_quote
+*Modems*
+Device that connects your router to the internet, and brings internet access to the LAN
+#+end_quote
+
+If a computer from one network wants to send information to a device on a network in a different geographic location, it would be transferred as follows:
+
+ + Computer sends information to the router
+ + Router transfers the information through the modem to the internet
+ + Recipient's modem receives the information and transfers it to the router
+ + Recipient's router forwards information to the destination device
+
+The above tools are physical devices, but many functions performed by these devices can be virtualized.
+
+#+begin_quote
+*Virtualization Tools*
+Pieces of software that perform network operations.
+#+end_quote
+
+Virtualization tools carry out operations that would normally be completed by the above devices and are offered by Cloud service providers, providing cost savings and scalability.
+
+*** Network Components, Devices, and Diagrams
+
+Network devices maintain information and services for users on a network and are connected over wired or wireless connections. Once a connection is established to the network, the devices send data packets which provide information abour the source and the destination of the data.
+
+[[file:./assets/network_devices.png]]
+
+#+begin_quote
+*Firewall*
+A network security device that monitors traffic ro or from your network.
+#+end_quote
+
+Can be utilized to restrict specific incoming and outgoing network traffic. Often residing between the secured and controlled internal network and the untrusted network resources outside the organization, like the internet.
+
+#+begin_quote
+*Servers*
+Provide a service for other devices on the network.
+#+end_quote
+
+Devices connected to a server are called clients, client-server model. Clients send requests to the server and the server performs requests for the clients, as an example, DNS servers that perform domain name lookups, file servers which store and retrieve files from a database, and comporate mail servers.
+
+*** Cloud Networks
+
+Cloud computing is the practice of using remote servers, applications, and network services that are hosted on the internet instead of on local physical devices.
+
+Providing an alternative to traditional on-premises networks, providing the benefits of traditional networks without storing and managing the network devices.
+
+#+begin_quote
+*Cloud Service Provider (CSP)*
+A company that offers cloud computing services.
+#+end_quote
+
+Companies who own large data centers in locations around the world housing millions of servers. Data centers provide technology services like storage and large scale computing.
+
+*Software as a Service (SaaS)*
+Software suites operated by the CSP that a company can use remotely without hosting the software.
+
+*Infrastructure as a Service (IaaS)*
+Use of virtual computers components offered the CSP such as, virtual containers and storage.
+
+*Platform as a Service (PaaS)*
+Tools that application developers can use to design custom applications.
+
+[[file:./assets/csp_services.png]]
+
+*Benefits of Cloud Computing*
+
+*Reliability*: How available cloud services and resources are, how secure connections are, and how often the services are effectively running.
+
+*Cost*: CSPs offer virtual devices and services at a fraction of the cost required for companies to install, patch, upgrade, and manage components and software themselves.
+
+*Scalability*: Changes to the infrastructure and software can be made quickly to meet the increase in business needs.
+
+** Network Communication
+
+Communication over a network happens when data is tranferred from one point to another, and these pieces of data are referred to as *data packets*.
+
+#+begin_quote
+*Data Packet*
+Basic unit of information that travels from one device to another within a network.
+#+end_quote
+
+A packet contains information about where the packet is going, where it's coming from, and the content of the message.
+
+ + Contains a header that include the IP address and the MAC (media accees control) address of the destination device.
+ + Contains a body which is the message that needs to be transmitted to the receiving device.
+ + Contains a footer which signals the receiving device the packet is finished.
+
+#+begin_quote
+*Bandwidth*
+Amount of data a device receives every second.
+#+end_quote
