@@ -4,7 +4,7 @@
 #+title: Google Cybersecurity Professional Certificate - Course 03 | Week 01
 #+hugo_custom_front_matter: :summary Week One of Google's Cybersecurity Certification, Connect and Protect: Networks and Network Security
 #+hugo_date: [2023-08-09 Wed]
-#+hugo_auto_set_lastmod: Time-stamp: <2023-08-14 00:00:46 (adelgado)>
+#+hugo_auto_set_lastmod: Time-stamp: <2023-09-10 18:28:29 (adelgado)>
 #+hugo_code_fence: nil
 #+hugo_section: notes
 #+hugo_draft: false
@@ -155,3 +155,57 @@ A packet contains information about where the packet is going, where it's coming
 *Bandwidth*
 Amount of data a device receives every second.
 #+end_quote
+
+*** TCP/IP Model
+
+#+begin_quote
+*Transmission Control Protocol and Internet Protocol* (TCP/IP)
+Standard model used for network communication.
+#+end_quote
+
+TCP is an internet comunication protocol that allows two devices to form a connection and stream data.
+
+IP has a set of standards used for routing and addressing data packets as they travel between devices on a network; includes the IP address.
+
+#+begin_quote
+*Port*
+A software-based location that organizes the sending and receiving of data between devices on a network.
+#+end_quote
+
+Ports divide network traffic into segments based on the service they will perform between two devides.
+
+Data packets include instructions that tell the receiving device what to do with the information, in the form of a port number.
+
+Common Ports
+ + 25: E-mail
+ + 443: HTTPS
+ + 20: Large File Transfers
+
+*** Four Layers of TCP/IP Model
+
+[[file:./assets/tcp_four_layers.png]]
+
+*Network Access Layer*
+Deals with the creation of data packets and their transmission across a network.
+
+*Internet Layer*
+Where the IP addresses are attached to data packets to indicate the location of the sender and receiver. Focuses on how networks connect to each other.
+
+*Transport Layer*
+Includes protocols to control the flow of traffic across a network, which permit or deny communication with other devices and include information about the status of the connection.
+
+*Application Layer*
+Protocols determine how the data packets will interact with receiving devices.
+
+*** Open Systems Interconnection (OSI) Model
+
+*TCP/IP model* is a framework used to visualize how data is organized and transmitted across a network.
+
+*OSI model* is a standardized concept that describes the seven layers computers use to communicate and send data over the network.
+
+---
+
+*Layer 7: Application Layer*
+
+Includes processes that directly involve the everyday user, which includes all of the networking protocols that software applications use to connect a user to the internet.
+
